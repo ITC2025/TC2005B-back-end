@@ -1,8 +1,2 @@
-# Schaefer-backend
-
-Schaefer-backend project
-Tech: :nodejs :express :sequelize :mysql
-
-
-
-
+# Back End Proyecto TC2005B
+Back-End para proyecto de Schaefer.
