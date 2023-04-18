@@ -5,7 +5,7 @@ const db = require('./src/models')
 const app = express()
 const port = 3000
 
-db.sequelize.sync()
+db.sequelize.sync({})
  .then(() => {
  console.log("Synced db.");
  })
@@ -22,5 +22,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
- console.log(`Example app listening on port ${port}`)
+ console.log(`Server listening to port ${port}`)
 })
