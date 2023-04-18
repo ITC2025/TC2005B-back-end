@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const empleados = require('./empleados');
 module.exports = (sequelize, DataTypes) => {
   class Proyectos extends Model {
     /**
@@ -15,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.SolicitudViaticos,{
         foreignKey:'ID_proyecto'
       })
+
+      this.belongsToMany(Empleados, {through:ProyectosEmpleados})
+
     }
   }
   Proyectos.init({

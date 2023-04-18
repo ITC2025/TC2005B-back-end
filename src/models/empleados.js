@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Roles,{
         foreignKey:'ID_rol'
       })
+
+      this.belongsTo(models.Oficinas,{
+        foreignKey:'ID_oficina'
+      })
+
       this.hasOne(models.Cuentas,{
         foreignKey:'ID_empleado'
       })
@@ -24,6 +29,8 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.SolicitudViaticos,{
         foreignKey:'ID_empleado'
       })
+
+      this.belongsToMany(Proyectos, {through:ProyectosEmpleados})
     }
   }
   Empleados.init({
