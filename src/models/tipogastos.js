@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   TipoGastos.init({
     ID_tipo_gasto: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true
     },
     descripcion: DataTypes.STRING

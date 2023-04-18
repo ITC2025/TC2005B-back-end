@@ -33,6 +33,8 @@ module.exports = (sequelize, DataTypes) => {
   ReporteGastos.init({
     ID_reporte_gasto: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true
     },
     concepto: DataTypes.STRING,

@@ -24,6 +24,8 @@ module.exports = (sequelize, DataTypes) => {
   StatusReembolsos.init({
     ID_status_reembolso: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true
     },
     descripcion: DataTypes.STRING

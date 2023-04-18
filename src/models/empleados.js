@@ -30,13 +30,23 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'ID_empleado'
       })
 
-      this.belongsToMany(Proyectos, {through:ProyectosEmpleados})
+      this.belongsToMany(models.Proyectos, {through : 'ProyectosEmpleados'})
     }
   }
   Empleados.init({
     ID_empleado: {
       type: DataTypes.INTEGER,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
+    ID_rol: {
+        type : DataTypes.INTEGER,
+        allowNull: false,
+    },
+    ID_oficina: {
+        type : DataTypes.INTEGER,
+        allowNull: false,
     },
     name: DataTypes.STRING,
     apellido: DataTypes.STRING,

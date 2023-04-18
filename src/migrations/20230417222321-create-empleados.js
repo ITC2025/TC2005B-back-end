@@ -15,7 +15,7 @@ module.exports = {
         references: {        
           model: 'Roles',
           key: 'ID_rol'
-        }
+        },
       },
       ID_oficina :{
         type : Sequelize.INTEGER,
@@ -23,7 +23,7 @@ module.exports = {
         references: {        
           model: 'Oficinas',
           key: 'ID_oficina'
-        }
+        },
       },
       name: {
         type: Sequelize.STRING

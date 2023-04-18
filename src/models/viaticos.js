@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   Viaticos.init({
     ID_viatico: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true
     },
     concepto: DataTypes.STRING,

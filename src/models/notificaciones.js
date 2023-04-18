@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   Notificaciones.init({
     ID_notificacion: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true
     },
     descripcion: DataTypes.STRING

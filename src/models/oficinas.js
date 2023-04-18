@@ -19,7 +19,9 @@ module.exports = (sequelize, DataTypes) => {
   Oficinas.init({
     ID_oficina: {
       type: DataTypes.INTEGER,
-      primaryKey: true
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
     nombre: DataTypes.STRING,
     ciudad: DataTypes.STRING,

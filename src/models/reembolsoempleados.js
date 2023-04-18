@@ -24,6 +24,8 @@ module.exports = (sequelize, DataTypes) => {
   ReembolsoEmpleados.init({
     ID_reembolso_empleados: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true
     },
     monto: DataTypes.DECIMAL

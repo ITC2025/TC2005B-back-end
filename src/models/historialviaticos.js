@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   HistorialViaticos.init({
     ID_historico_gasto: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true
     },
     fechaModificacion: DataTypes.DATE
