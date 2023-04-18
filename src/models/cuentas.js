@@ -33,7 +33,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true
     },
-    saldo: DataTypes.DECIMAL
+    saldo: DataTypes.DECIMAL,
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: new Date() 
+    },
+    updatedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+    },
   }, {
     sequelize,
     modelName: 'Cuentas',

@@ -40,7 +40,16 @@ module.exports = (sequelize, DataTypes) => {
     concepto: DataTypes.STRING,
     monto: DataTypes.DECIMAL,
     fecha: DataTypes.DATE,
-    imagen: DataTypes.BLOB
+    imagen: DataTypes.BLOB,
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: new Date() 
+    },
+    updatedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+    },
   }, {
     sequelize,
     modelName: 'ReporteGastos',

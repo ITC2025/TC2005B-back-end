@@ -23,7 +23,16 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    descripcion: DataTypes.STRING
+    descripcion: DataTypes.STRING,
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: new Date() 
+    },
+    updatedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+    },
   }, {
     sequelize,
     modelName: 'StatusReporteGastos',

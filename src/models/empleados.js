@@ -52,7 +52,16 @@ module.exports = (sequelize, DataTypes) => {
     apellido: DataTypes.STRING,
     telefono: DataTypes.INTEGER,
     correoElectronico: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: new Date() 
+    },
+    updatedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+    },
   }, {
     sequelize,
     modelName: 'Empleados',

@@ -25,7 +25,16 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     concepto: DataTypes.STRING,
-    monto: DataTypes.DECIMAL
+    monto: DataTypes.DECIMAL,
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: new Date() 
+    },
+    updatedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+    },
   }, {
     sequelize,
     modelName: 'Viaticos',

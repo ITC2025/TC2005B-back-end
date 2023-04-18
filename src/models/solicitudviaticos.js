@@ -46,7 +46,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     monto: DataTypes.DECIMAL,
     fechaEnvioSolicitud: DataTypes.DATE,
-    fechaAprobado: DataTypes.DATE
+    fechaAprobado: DataTypes.DATE,
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: new Date() 
+    },
+    updatedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+    },
   }, {
     sequelize,
     modelName: 'SolicitudViaticos',

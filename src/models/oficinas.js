@@ -26,7 +26,16 @@ module.exports = (sequelize, DataTypes) => {
     nombre: DataTypes.STRING,
     ciudad: DataTypes.STRING,
     estado: DataTypes.STRING,
-    cp: DataTypes.STRING
+    cp: DataTypes.STRING,
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: new Date() 
+    },
+    updatedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+    },
   }, {
     sequelize,
     modelName: 'Oficinas',
