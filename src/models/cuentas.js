@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Cuentas.init({
+    ID_cuenta: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     saldo: DataTypes.DECIMAL
   }, {
     sequelize,

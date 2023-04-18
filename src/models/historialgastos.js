@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   HistorialGastos.init({
+    ID_historico_gasto: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     fechaModificacion: DataTypes.DATE
   }, {
     sequelize,

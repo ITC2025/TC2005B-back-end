@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Viaticos.init({
+    ID_viatico: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     concepto: DataTypes.STRING,
     monto: DataTypes.DECIMAL
   }, {

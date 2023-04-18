@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Empleados.init({
+    ID_empleado: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     name: DataTypes.STRING,
     apellido: DataTypes.STRING,
     telefono: DataTypes.INTEGER,

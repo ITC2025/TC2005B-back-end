@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Notificaciones', {
-      id: {
+      ID_notificacion: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

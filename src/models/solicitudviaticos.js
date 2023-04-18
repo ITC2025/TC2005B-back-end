@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   SolicitudViaticos.init({
+    ID_solicitud_viaticos: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     monto: DataTypes.DECIMAL,
     fechaEnvioSolicitud: DataTypes.DATE,
     fechaAprobado: DataTypes.DATE

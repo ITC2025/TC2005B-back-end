@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   TipoGastos.init({
+    ID_tipo_gasto: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     descripcion: DataTypes.STRING
   }, {
     sequelize,

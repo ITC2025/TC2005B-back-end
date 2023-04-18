@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Proyectos.init({
+    ID_proyecto: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     codigoProyecto: DataTypes.STRING,
     descripcion: DataTypes.STRING
   }, {

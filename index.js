@@ -5,7 +5,7 @@ const db = require('./src/models')
 const app = express()
 const port = 3000
 
-db.sequelize.sync()
+db.sequelize.sync({force:true})
  .then(() => {
  console.log("Synced db.");
  })
