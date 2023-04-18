@@ -9,6 +9,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      ID_solicitud_viatico:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'SolicitudViaticos',
+            key: 'ID_solicitud_viaticos'
+          }
+      },
+      ID_status_solicitud_viatico:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'StatusSolicitudViaticos',
+            key: 'ID_status_solicitud_viaticos'
+          }
+      },
       fechaModificacion: {
         type: Sequelize.DATE
       },

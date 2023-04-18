@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   SolicitudViaticos.init({
-    ID_solicitud_viaticos: {
+    ID_solicitud_viatico: {
       type: DataTypes.INTEGER,
       primaryKey: true
     },

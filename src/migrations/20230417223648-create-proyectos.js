@@ -9,6 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      ID_empleado:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'Empleados',
+            key: 'ID_empleado'
+          }
+      },
       codigoProyecto: {
         type: Sequelize.STRING
       },

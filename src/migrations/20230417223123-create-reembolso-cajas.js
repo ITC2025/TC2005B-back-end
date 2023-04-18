@@ -9,6 +9,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      ID_cuenta:{
+        type : Sequelize.INTEGER,
+        allowNull: false,
+        references: {        
+          model: 'Cuentas',
+          key: 'ID_cuenta'
+        }
+      },
+      ID_status_reembolso:{
+        type : Sequelize.INTEGER,
+        allowNull: false,
+        references: {        
+          model: 'StatusReembolsos',
+          key: 'ID_status_reembolso'
+        }
+      },
       monto: {
         type: Sequelize.DECIMAL
       },

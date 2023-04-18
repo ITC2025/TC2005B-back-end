@@ -11,9 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
 
     static associate(models) {
-      this.hasOne(models.Empleados, {
-        foreignKey: 'ID_empleado'
-      });
+
+      this.belongsTo(models.Empleados,{
+        foreignKey:'ID_empleado'
+      })
+      
     }
   }
   Cuentas.init({

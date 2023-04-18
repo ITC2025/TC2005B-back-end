@@ -9,6 +9,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      ID_reporte_gasto:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'ReporteGastos',
+            key: 'ID_reporte_gasto'
+          }
+      },
+      ID_status_reporte_gasto:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'StatusReporteGastos',
+            key: 'ID_status_reporte_gasto'
+          }
+      },
       fechaModificacion: {
         type: Sequelize.DATE
       },

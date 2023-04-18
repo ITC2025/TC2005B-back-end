@@ -9,6 +9,30 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      ID_solicitud_viaticos:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'SolicitudViaticos',
+            key: 'ID_solicitud_viaticos'
+          }
+      },
+      ID_tipo_gasto:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'TipoGastos',
+            key: 'ID_tipo_gasto'
+          }
+      },
+      ID_status_reporte_gasto:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'StatusReporteGastos',
+            key: 'ID_status_reporte_gasto'
+          }
+      },
       concepto: {
         type: Sequelize.STRING
       },

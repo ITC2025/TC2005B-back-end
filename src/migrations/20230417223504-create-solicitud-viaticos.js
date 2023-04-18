@@ -3,11 +3,35 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('SolicitudViaticos', {
-      ID_solicitud_viaticos: {
+      ID_solicitud_viatico: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      ID_empleado:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'Empleados',
+            key: 'ID_empleado'
+          }
+      },
+      ID_status_solicitud_viaticos:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'SolicitudViaticos',
+            key: 'ID_status_solicitud_viaticos'
+          }
+      },
+      ID_proyecto:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'Proyectos',
+            key: 'ID_proyecto'
+          }
       },
       monto: {
         type: Sequelize.DECIMAL

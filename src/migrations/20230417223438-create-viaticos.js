@@ -9,6 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      ID_solicitud_viatico:{
+        type : Sequelize.INTEGER,
+          allowNull: false,
+          references: {        
+            model: 'SolicitudViaticos',
+            key: 'ID_solicitud_viatico'
+          }
+      },
       concepto: {
         type: Sequelize.STRING
       },
