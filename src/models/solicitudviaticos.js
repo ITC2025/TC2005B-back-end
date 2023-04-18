@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'ID_status_solicitud_viaticos'
       })
 
-      this.belongsTo(models.Viaticos,{
-        foreignKey:'ID_viatico'
+      this.hasOne(models.Viaticos,{
+        foreignKey:'ID_solicitud_viatico'
       })
 
       this.hasMany(models.ReporteGastos,{

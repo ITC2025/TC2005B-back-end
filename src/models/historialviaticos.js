@@ -15,10 +15,14 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.SolicitudViaticos,{
         foreignKey: 'ID_solicitud_viatico'
       })
+
+      this.belongsTo(models.StatusSolicitudViaticos,{
+        foreignKey: 'ID_status_solicitud_viaticos'
+      })
     }
   }
   HistorialViaticos.init({
-    ID_historico_gasto: {
+    ID_historico_viatico: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,

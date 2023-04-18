@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'ID_empleado'
       })
 
+      this.hasMany(models.Proyectos,{
+        foreignKey:'ID_empleado'
+      })
+
       this.hasMany(models.Notificaciones,{
         foreignKey:'ID_empleado'
       })

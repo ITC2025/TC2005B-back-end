@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.ReporteGastos,{
         foreignKey:'ID_reporte_gasto'
       })
+
+      this.belongsTo(models.StatusReporteGastos,{
+        foreignKey: 'ID_status_reporte_gasto'
+      })
     }
   }
   HistorialGastos.init({
