@@ -1,24 +1,24 @@
-// Controller for users:
+// Controller for roles:
 	
-// 	- user_index
-// 	- user_get_by_id
-// 	- user_create
-// 	- user_delete
-// 	- user_update
+// 	- role_index
+// 	- role_get_by_id
+// 	- role_create
+// 	- role_delete
+// 	- role_update
 
 let db = require('../models')
 
-module.exports.user_index = (req, res) => {
-	db.Empleados.findAll()
+module.exports.role_index = (req, res) => {
+	db.Roles.findAll()
 		.then((result) => {
 			res.send(result);
 		});
 };
 
-module.exports.user_get_by_id = (req, res) => {	
-	db.Empleados.findAll({
+module.exports.role_get_by_id = (req, res) => {	
+	db.Roles.findAll({
 		where : {
-			ID_empleado: req.params.id
+			ID_rol: req.params.id
 		}
 	}).then((result) => {
 			res.send(result);
@@ -26,7 +26,7 @@ module.exports.user_get_by_id = (req, res) => {
 };
 
 
-module.exports.user_create =  (req, res) => {
+module.exports.role_create =  (req, res) => {
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -49,44 +49,39 @@ module.exports.user_create =  (req, res) => {
 	// 	}
 	// }
 
-	let user = { 
+	let role = { 
 		ID_rol: req.body.ID_rol,
-		ID_oficina: req.body.ID_oficina,
-		name: req.body.name,
-		apellido: req.body.apellido,
-		telefono: req.body.telefono,
-		correoElectronico: req.body.correoElectronico,
-		password: req.body.password
+		descripcion: req.body.descripcion,
 	};
 
-	db.Empleados.create(user)
+	db.Roles.create(role)
 		.then((data) => {
 			res.status(200).json({
 				status: "success",
-				message: "User successfully created",
+				message: "Role successfully created",
 				payload: data
 			});
 		})
 		.catch((err) => {
 			res.status(500).json({
 				status: "error",
-				message: "Error creating user. " + err.message,
+				message: "Error creating role. " + err.message,
 				payload: null
 			});
 		});
 };
 
 
-module.exports.user_delete = (req, res) => {
-	db.Empleados.destroy({
+module.exports.role_delete = (req, res) => {
+	db.Roles.destroy({
 		where: {
-			ID_empleado: req.params.id
+			ID_rol: req.params.id
 		}
 	}).then((success) => {
 		if (success) {
 				res.status(200).json({
 					status: "success",
-					message: "User successfully deleted",
+					message: "Role successfully deleted",
 					payload: null 
 				});
 		}
@@ -94,20 +89,20 @@ module.exports.user_delete = (req, res) => {
 		else {
 				res.status(200).json({
 					status: "error",
-					message: "User could not be deleted",
+					message: "Role could not be deleted",
 					payload: null
 				});
 		}
 	}).catch((err) => {
 			res.status(500).json({
 				status: "error",
-				message: "Error deleting user. " + err.message,
+				message: "Error deleting role. " + err.message,
 				payload: null
 			});
 	});
 };
 
-module.exports.user_update = (req, res) => {
+module.exports.role_update = (req, res) => {
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -118,14 +113,14 @@ module.exports.user_update = (req, res) => {
 		return;
 	};
 
-	db.Empleados.update(req.body, {
+	db.Roles.update(req.body, {
 		where: {
-			ID_empleado: req.params.id
+			ID_rol: req.params.id
 		}}).then((success) => {
 			if (success) {
 				res.status(200).json({
 					status: "success",
-					message: "User successfully updated",
+					message: "Role successfully updated",
 					payload: req.body
 				});
 			}
@@ -133,14 +128,14 @@ module.exports.user_update = (req, res) => {
 			else {
 				res.status(500).json({
 					status: "error",
-					message: "User could not be updated",
+					message: "Role could not be updated",
 					payload: null
 				});
 			}
-		}).catch((err) => {
+	}).catch((err) => {
 			res.status(500).json({
 				status: "error",
-				message: "Error updating user. " + err.message,
+				message: "Error updating role. " + err.message,
 				payload: null
 			});
 	});

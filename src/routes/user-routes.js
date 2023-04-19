@@ -1,4 +1,4 @@
-// Router para empleado:
+// User routes
 let express = require("express");
 let user_controller = require("../controllers/user-controller");
 

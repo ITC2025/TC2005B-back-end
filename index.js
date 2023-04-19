@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const db = require('./src/models')
 const user_routes = require("./src/routes/user-routes");
+const role_routes = require("./src/routes/role-routes");
 const home_routes = require("./src/routes/home-routes");
 
 const app = express()
@@ -18,7 +19,8 @@ db.sequelize.sync()
 app.use(morgan('dev'))
 app.use(express.json());
 
-app.use("/user", user_routes);
+app.use("/users", user_routes);
+app.use("/roles", role_routes);
 app.use(home_routes);
 
 app.all('*', (req, res) => {
