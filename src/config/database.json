@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "sql9613379",
-    "password": "sql9613379",
-    "database": "ZjAUe8TaRe",
+    "password": "ZjAUe8TaRe",
+    "database": "sql9613379",
     "host": "sql9.freemysqlhosting.net",
     "dialect": "mysql"
   },
