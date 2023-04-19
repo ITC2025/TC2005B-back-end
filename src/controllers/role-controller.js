@@ -50,7 +50,6 @@ module.exports.role_create =  (req, res) => {
 	// }
 
 	let role = { 
-		ID_rol: req.body.ID_rol,
 		descripcion: req.body.descripcion,
 	};
 
