@@ -1,9 +1,9 @@
 // Controller for users:
 	
-// 	- user_create
-// 	- user_delete
 // 	- user_index
 // 	- user_get_by_id
+// 	- user_create
+// 	- user_delete
 // 	- user_update
 
 let db = require('../models')
@@ -77,6 +77,31 @@ module.exports.user_create =  (req, res) => {
 		});
 };
 
+
+module.exports.user_delete = (req, res) => {
+	db.Empleados.destroy({
+		where: {
+			ID_empleado: req.params.id
+		}
+	}).then((success) => {
+		if (success) {
+				res.status(200).json({
+					status: "success",
+					message: "User successfully deleted",
+					payload: null 
+				});
+		}
+
+		else {
+				res.status(200).json({
+					status: "error",
+					message: "User could not be deleted",
+					payload: null
+				});
+		}
+	});
+};
+
 module.exports.user_update = (req, res) => {
 	console.log("HI");
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
@@ -109,28 +134,4 @@ module.exports.user_update = (req, res) => {
 				});
 			}
 		})
-};
-
-module.exports.user_delete = (req, res) => {
-	db.Empleados.destroy({
-		where: {
-			ID_empleado: req.params.id
-		}
-	}).then((success) => {
-		if (success) {
-				res.status(200).json({
-					status: "success",
-					message: "User successfully deleted",
-					payload: null 
-				});
-		}
-
-		else {
-				res.status(200).json({
-					status: "error",
-					message: "User could not be deleted",
-					payload: null
-				});
-		}
-	});
 };
