@@ -10,5 +10,4 @@ router.patch("/:id", user_controller.user_update);
 router.post("/", user_controller.user_create);
 router.delete("/:id", user_controller.user_delete);
 
-
 module.exports = router;
