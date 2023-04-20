@@ -14,7 +14,7 @@ module.exports = {
           allowNull: false,
           references: {        
             model: 'SolicitudViaticos',
-            key: 'ID_solicitud_viaticos'
+            key: 'ID_solicitud_viatico'
           }
       },
       ID_status_solicitud_viatico:{

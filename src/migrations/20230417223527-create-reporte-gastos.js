@@ -9,12 +9,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ID_solicitud_viaticos:{
+      ID_solicitud_viatico:{
         type : Sequelize.INTEGER,
           allowNull: false,
           references: {        
             model: 'SolicitudViaticos',
-            key: 'ID_solicitud_viaticos'
+            key: 'ID_solicitud_viatico'
           }
       },
       ID_tipo_gasto:{
