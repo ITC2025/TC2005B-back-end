@@ -7,12 +7,12 @@ const status_viatico_request_routes = require("./status-viatico-request-routes")
 const status_expense_report_routes = require("./status-expense-report-routes");
 const type_expense_routes = require("./type-expense-routes");
 const home_routes = require("./home-routes");
-const status_refund_routes = require("./src/routes/status-refund-routes");
-const accound_routes = require("./src/routes/account-routes");
-const notification_routes = require("./src/routes/notification-routes");
-const project_routes = require("./src/routes/project-routes");
-const viatico_request_routes = require("./src/routes/viatico-request-routes");
-const viatico_routes = require("./src/routes/viatico-routes");
+const status_refund_routes = require("./status-refund-routes");
+const accound_routes = require("./account-routes");
+const notification_routes = require("./notification-routes");
+const project_routes = require("./project-routes");
+const viatico_request_routes = require("./viatico-request-routes");
+const viatico_routes = require("./viatico-routes");
 
 let app_router = express.Router(); 
 
