@@ -1,6 +1,6 @@
 // StatusReembolso routes
 let express = require("express");
-let status_refund_controller = require("../controllers/status_refund-controller");
+let status_refund_controller = require("../controllers/status-refund-controller");
 
 let router = express.Router();
 
