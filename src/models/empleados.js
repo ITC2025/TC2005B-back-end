@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'ID_empleado'
       })
 
-      this.belongsToMany(models.Proyectos, {through : 'ProyectosEmpleados'})
+      this.belongsToMany(models.Proyectos, {through : 'ProyectosEmpleados', foreignKey: 'ID_empleado'})
     }
   }
   Empleados.init({

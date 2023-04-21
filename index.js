@@ -1,8 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const db = require('./src/models')
-const empleado_routes = require("./src/routes/empleado-routes");
-const home_routes = require("./src/routes/home-routes");
+const app_router = require("./src/routes/index");
 
 const app = express()
 const port = 3000
@@ -17,13 +16,7 @@ db.sequelize.sync()
 
 app.use(morgan('dev'))
 app.use(express.json());
-
-app.use("/user", empleado_routes);
-app.use(home_routes);
-
-app.all('*', (req, res) => {
-	res.send("Not found!");
-});
+app.use(app_router);
 
 app.listen(port, () => {
  console.log(`Server listening to port ${port}`)
