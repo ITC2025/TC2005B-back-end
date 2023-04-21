@@ -27,7 +27,7 @@ export const Login = (req, res) => {
           rol: data[0].ID_rol
         }, "ITC_Besto_Team", 
         {
-          expiresIn: 100
+          expiresIn: 7200
         })
         
         res.json({
