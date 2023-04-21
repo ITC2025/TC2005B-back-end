@@ -17,7 +17,6 @@ export const Login = (req, res) => {
     if(data.length == 0){
       //usuario no encontrado
       res.json({
-        msg: "No existe"
       })
     } else {
       //usuario encontrado
@@ -26,7 +25,10 @@ export const Login = (req, res) => {
         const token = jwt.sign({
           id: data[0].ID_empleado,
           rol: data[0].ID_rol
-        }, "ITC_Besto_Team")
+        }, "ITC_Besto_Team", 
+        {
+          expiresIn: 100
+        })
         
         res.json({
           token
@@ -35,7 +37,6 @@ export const Login = (req, res) => {
       } else {
         //contraseña incorrecta
         res.json({
-          msg: "Contra incorrecta"
         })
       }
     }
