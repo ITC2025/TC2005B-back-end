@@ -4,7 +4,7 @@ const db = require('./src/models')
 const app_router = require("./src/routes/index");
 
 const app = express()
-const port = 3000
+const port = 3001
 
 db.sequelize.sync()
  .then(() => {

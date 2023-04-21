@@ -1,10 +1,9 @@
-import { Router } from 'express';
-import { Login } 
-from '../controllers/LoginController';
+let express = require("express");
+let notification_controller = require("../controllers/LoginController");
+import {Login} from '../controllers/LoginController';
 
-const LoginRouter = Router();
+let router = express.Router();
 
-LoginRouter.post('/', Login);
+router.post('/', Login);
 
-export default LoginRouter;
-
+module.exports = router;
