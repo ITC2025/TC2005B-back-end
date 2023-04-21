@@ -12,10 +12,22 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       
+      this.belongsTo(models.Proyectos,{
+        foreignKey: 'ID_proyecto'
+      })
+
+      this.belongsTo(models.Empleados, {
+        foreignKey: 'ID_empleado'
+      });
     }
   }
   ProyectosEmpleados.init({
-
+    ID_proyecto_empleado: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+    }
   }, {
     sequelize,
     modelName: 'ProyectosEmpleados',
