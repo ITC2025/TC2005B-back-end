@@ -9,6 +9,7 @@
 let db = require('../models')
 
 module.exports.user_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.findAll()
 		.then((result) => {
 			res.send(result);
@@ -27,6 +28,7 @@ module.exports.user_get_by_id = (req, res) => {
 
 
 module.exports.user_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -78,6 +80,7 @@ module.exports.user_create =  (req, res) => {
 
 
 module.exports.user_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.destroy({
 		where: {
 			ID_empleado: req.params.id
@@ -108,6 +111,7 @@ module.exports.user_delete = (req, res) => {
 };
 
 module.exports.user_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

@@ -9,13 +9,15 @@
 let db = require('../models')
 
 module.exports.expense_report_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.findAll()
 		.then((result) => {
 			res.send(result);
 		});
 };
 
-module.exports.expense_report_get_by_id = (req, res) => {	
+module.exports.expense_report_get_by_id = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);	
 	db.ReporteGastos.findAll({
 		where : {
 			ID_reporte_gasto: req.params.id
@@ -27,6 +29,7 @@ module.exports.expense_report_get_by_id = (req, res) => {
 
 
 module.exports.expense_report_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -78,6 +81,7 @@ module.exports.expense_report_create =  (req, res) => {
 
 
 module.exports.expense_report_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.destroy({
 		where: {
 			ID_reporte_gasto: req.params.id
@@ -108,6 +112,7 @@ module.exports.expense_report_delete = (req, res) => {
 };
 
 module.exports.expense_report_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

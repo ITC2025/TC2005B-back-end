@@ -9,6 +9,7 @@
 let db = require('../models')
 
 module.exports.type_expense_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.TipoGastos.findAll()
 		.then((result) => {
 			res.send(result);
@@ -16,6 +17,7 @@ module.exports.type_expense_index = (req, res) => {
 };
 
 module.exports.type_expense_get_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.TipoGastos.findAll({
 		where : {
 			ID_tipo_gasto: req.params.id
@@ -27,6 +29,7 @@ module.exports.type_expense_get_by_id = (req, res) => {
 
 
 module.exports.type_expense_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -72,6 +75,7 @@ module.exports.type_expense_create =  (req, res) => {
 
 
 module.exports.type_expense_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.TipoGastos.destroy({
 		where: {
 			ID_tipo_gasto: req.params.id
@@ -102,6 +106,7 @@ module.exports.type_expense_delete = (req, res) => {
 };
 
 module.exports.type_expense_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

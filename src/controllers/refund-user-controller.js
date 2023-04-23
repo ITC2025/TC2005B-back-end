@@ -9,6 +9,7 @@
 let db = require('../models')
 
 module.exports.refund_user_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReembolsoEmpleados.findAll()
 		.then((result) => {
 			res.send(result);
@@ -16,6 +17,7 @@ module.exports.refund_user_index = (req, res) => {
 };
 
 module.exports.refund_user_get_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReembolsoEmpleados.findAll({
 		where : {
 			ID_reembolso_empleados: req.params.id
@@ -27,6 +29,7 @@ module.exports.refund_user_get_by_id = (req, res) => {
 
 
 module.exports.refund_user_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -74,6 +77,7 @@ module.exports.refund_user_create =  (req, res) => {
 
 
 module.exports.refund_user_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReembolsoEmpleados.destroy({
 		where: {
 			ID_reembolso_empleados: req.params.id
@@ -104,6 +108,7 @@ module.exports.refund_user_delete = (req, res) => {
 };
 
 module.exports.refund_user_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
