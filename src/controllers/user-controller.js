@@ -16,7 +16,19 @@ module.exports.user_index = (req, res) => {
 		});
 };
 
+module.exports.user_get_by_role = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.Empleados.findAll({
+		where : {
+			ID_rol: req.params.rol
+		}
+	}).then((result) => {
+			res.send(result);
+	});
+};
+
 module.exports.user_get_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.findAll({
 		where : {
 			ID_empleado: req.params.id
