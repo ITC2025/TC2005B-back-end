@@ -66,6 +66,10 @@ module.exports.viatico_request_create =  (req, res) => {
 
 	let viatico_request = { 
 		monto: req.body.monto,
+		descripcion: req.body.descripcion,
+		destino: req.body.destino,
+		fechaInicio: req.body.fechaInicio,
+		fechaTermino: req.body.fechaTermino,
         ID_empleado: req.body.ID_empleado,
         ID_proyecto: req.body.ID_proyecto,
         ID_status_solicitud_viaticos: req.body.ID_status_solicitud_viaticos
