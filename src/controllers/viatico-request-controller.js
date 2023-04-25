@@ -6,6 +6,7 @@
 // 	- viatico_request_delete
 // 	- viatico_request_update
 
+const { stat } = require('fs');
 let db = require('../models')
 
 module.exports.viatico_request_index = (req, res) => {
@@ -158,4 +159,61 @@ module.exports.viatico_request_update = (req, res) => {
 				payload: null
 			});
 	});
+};
+
+module.exports.solicitar_viatico = async (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
+		res.status(404).json({
+			status: "error",
+			message: "Empty body",
+			payload: null
+		});
+
+		return;
+	};
+
+	// Checks that no key has null value
+	// for (let key in req.body) {
+	// 	if (req.body[key] == null || req.body[key] == '') {
+	// 		res.writeHead(400, {"Content-Type": "application/json"});
+	// 		res.end(JSON.stringify({
+	// 			status: "error",
+	// 			message: `null key ${key}`
+	// 		}));
+	// 		return;
+	// 	}
+	// }
+
+	//Buscar empleado por nombre
+	let empleado = await db.Empleados.findOne({ where: { name: req.body.nombre_empleado } });
+	let proyecto = await db.Proyectos.findOne({ where: { codigoProyecto: req.body.codigo_proyecto }})
+	let status = await db.StatusSolicitudViaticos.findOne({ where: { descripcion: req.body.status_descripcion }})
+
+	console.log(empleado.ID_empleado)
+	console.log(proyecto.ID_proyecto)
+	console.log(status.ID_status_solicitud_viaticos)
+
+	let viatico_request = { 
+		monto: req.body.monto,
+        ID_empleado: empleado.ID_empleado,
+        ID_proyecto: proyecto.ID_proyecto,
+        ID_status_solicitud_viaticos: status.ID_status_solicitud_viaticos
+	};
+
+	db.SolicitudViaticos.create(viatico_request)
+		.then((data) => {
+			res.status(200).json({
+				status: "success",
+				message: "Viatico Request successfully created",
+				payload: data
+			});
+		})
+		.catch((err) => {
+			res.status(500).json({
+				status: "error",
+				message: "Error creating Viatico Request. " + err.message,
+				payload: null
+			});
+		});
 };

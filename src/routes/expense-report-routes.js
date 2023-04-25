@@ -10,4 +10,6 @@ router.patch("/:id", expense_report_controller.expense_report_update);
 router.post("/", expense_report_controller.expense_report_create);
 router.delete("/:id", expense_report_controller.expense_report_delete);
 
+router.post("/crear", expense_report_controller.crear_reporte);
+
 module.exports = router;
