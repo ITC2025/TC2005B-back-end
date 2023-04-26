@@ -8,6 +8,51 @@
 
 let db = require('../models')
 
+module.exports.userSaldoGet = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.Cuentas.findOne({
+		where: {
+			ID_empleado: req.params.id
+		}
+	})
+	.then((data) => {
+		const saldo = {
+			saldo: data.saldo
+		}
+		res.send(saldo)
+	})
+}
+
+module.exports.userViaticos = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.SolicitudViaticos.findAll({
+		where: {
+			ID_empleado: req.params.id
+		},
+		include: [
+			{
+				model: db.Proyectos
+			},
+			{
+				model: db.StatusSolicitudViaticos
+			}
+		]
+	})
+	.then((data) => {
+		const expenses = data.map((expenses) => {
+			return {
+				ID:expenses.ID_solicitud_viatico,
+				fecha:expenses.fechaEnvioSolicitud,
+				proyecto: expenses.Proyecto.codigoProyecto,
+				descripcion: expenses.Proyecto.descripcion,
+				total: expenses.monto,
+				estado: expenses.StatusSolicitudViatico.descripcion
+			}
+		})
+		res.send(expenses)
+	})
+}
+
 module.exports.user_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.findAll()
