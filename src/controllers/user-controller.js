@@ -5,8 +5,16 @@
 // 	- user_create
 // 	- user_delete
 // 	- user_update
-
 const db = require('../models')
+const bcrypt = require("bcrypt");
+const { isEmail } = require("validator");
+
+const hash_password = async (password) => {
+	const salt = await bcrypt.genSalt();
+	let hashed_password = await bcrypt.hash(password, salt);
+
+	return hashed_password;
+}
 
 module.exports.user_index = (req, res) => {
 	db.Empleados.findAll()
@@ -26,7 +34,7 @@ module.exports.user_get_by_id = (req, res) => {
 };
 
 
-module.exports.user_create =  (req, res) => {
+module.exports.user_create =  async (req, res) => {
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -37,18 +45,18 @@ module.exports.user_create =  (req, res) => {
 		return;
 	};
 
-	// Checks that no key has null value
-	// for (let key in req.body) {
-	// 	if (req.body[key] == null || req.body[key] == '') {
-	// 		res.writeHead(400, {"Content-Type": "application/json"});
-	// 		res.end(JSON.stringify({
-	// 			status: "error",
-	// 			message: `null key ${key}`
-	// 		}));
-	// 		return;
-	// 	}
-	// }
+	if (!(await isEmail(req.body.correoElectronico))) {
+		res.status(404).json({
+			status: "error",
+			message: "Invalid Email",
+			payload: null
+		});
 
+		return;
+	}
+
+	const user_hashed_password = await hash_password(req.body.password);
+	
 	let user = { 
 		ID_rol: req.body.ID_rol,
 		ID_oficina: req.body.ID_oficina,
@@ -56,7 +64,7 @@ module.exports.user_create =  (req, res) => {
 		apellido: req.body.apellido,
 		telefono: req.body.telefono,
 		correoElectronico: req.body.correoElectronico,
-		password: req.body.password
+		password: user_hashed_password	
 	};
 
 	db.Empleados.create(user)

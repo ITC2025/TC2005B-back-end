@@ -1,12 +1,16 @@
-const db =  require ("../models";
-const jwt = require("jsonwebtoken")
+const db =  require("../models");
+const jwt = require("jsonwebtoken");
+const cookie_parser = require("cookie-parser");
 
-export const Login = (req, res) => {
+const secret = "ITC_Besto_Team";
+const max_age = 60 * 60 * 24 * 14; // in seconds
+
+module.exports.login_post = (req, res) => {
   res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 
   const { correoElectronico, password } = req.body;
 
-  Empleados.findAll({
+  db.Empleados.findAll({
     where: {
       correoElectronico
     }
@@ -48,7 +52,7 @@ export const Login = (req, res) => {
   })
 }
 
-export const validate = (req, res, next) => {
+const validate = (req, res, next) => {
   res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 
   const hToken = req.headers['authorization'];
@@ -75,14 +79,14 @@ export const validate = (req, res, next) => {
 }
 
 
-export const adminVal = (req, res) => {
+const adminVal = (req, res) => {
   res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
   res.json({
     msg:"Soy admin"
   })
 } 
 
-export const isAdmin = (req, res, next) => {
+const isAdmin = (req, res, next) => {
   res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 
   const hToken = req.headers['authorization'];
