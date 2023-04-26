@@ -20,7 +20,7 @@ module.exports.project_get_by_id = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Proyectos.findAll({
 		where : {
-			ID_proyecto: req.params.id
+			ID_empleado: req.params.id
 		}
 	}).then((result) => {
 			res.send(result);
@@ -55,7 +55,7 @@ module.exports.project_create =  (req, res) => {
 	let project = { 
 		codigoProyecto: req.body.codigoProyecto,
         descripcion: req.body.descripcion,
-        ID_empleado: req.body.ID_empleado
+        ID_empleado: req.params.id
 	};
 
 	db.Proyectos.create(project)
