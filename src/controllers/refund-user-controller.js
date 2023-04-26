@@ -6,7 +6,7 @@
 // 	- refund_user_delete
 // 	- refund_user_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.refund_user_index = (req, res) => {
 	db.ReembolsoEmpleados.findAll()

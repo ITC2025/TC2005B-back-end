@@ -1,6 +1,5 @@
-import Model, { sequelize } from "../models";
+const db =  require ("../models";
 const jwt = require("jsonwebtoken")
-const { Empleados } = Model;
 
 export const Login = (req, res) => {
   res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);

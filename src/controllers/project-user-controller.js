@@ -6,7 +6,7 @@
 // 	- project_user_delete
 // 	- project_user_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.project_user_index = (req, res) => {
 	db.ProyectosEmpleados.findAll()

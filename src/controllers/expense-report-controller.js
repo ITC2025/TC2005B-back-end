@@ -6,7 +6,7 @@
 // 	- expense_report_delete
 // 	- expense_report_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.expense_report_index = (req, res) => {
 	db.ReporteGastos.findAll()

@@ -1,6 +1,6 @@
-let express = require("express");
+const express = require("express");
 
-const login_route = require("./LoginRoutes");
+const login_routes = require("./login-routes");
 const user_routes = require("./user-routes");
 const role_routes = require("./role-routes");
 const office_routes = require("./office-routes");
@@ -21,9 +21,9 @@ const refund_cashier_routes = require("./refund-cashier-routes");
 const refund_user_routes = require("./refund-user-routes");
 const viaticos_records_routes = require("./viaticos-records-routes");
 
-let app_router = express.Router(); 
+const app_router = express.Router(); 
 
-app_router.use("/login", login_route);
+app_router.use("/login", login_routes);
 app_router.use("/users", user_routes);
 app_router.use("/roles", role_routes);
 app_router.use("/offices", office_routes);

@@ -1,7 +1,7 @@
 // Router para home:
-let express = require("express");
+const express = require("express");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get('/', (req, res) => {
  res.send('Schaefer')

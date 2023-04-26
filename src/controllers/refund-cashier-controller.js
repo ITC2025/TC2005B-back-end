@@ -6,7 +6,7 @@
 // 	- refund_cashier_delete
 // 	- refund_cashier_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.refund_cashier_index = (req, res) => {
 	db.ReembolsoCajas.findAll()

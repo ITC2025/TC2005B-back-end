@@ -6,7 +6,7 @@
 // 	- user_delete
 // 	- user_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.user_index = (req, res) => {
 	db.Empleados.findAll()

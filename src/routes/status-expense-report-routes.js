@@ -1,8 +1,8 @@
 // Expense Report Status routes
-let express = require("express");
-let status_expense_report_controller = require("../controllers/status-expense-report-controller");
+const express = require("express");
+const status_expense_report_controller = require("../controllers/status-expense-report-controller");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/:id", status_expense_report_controller.status_expense_report_get_by_id);
 router.get("/", status_expense_report_controller.status_expense_report_index);

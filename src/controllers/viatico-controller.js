@@ -6,7 +6,7 @@
 // 	- viatico_delete
 // 	- viatico_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.viatico_index = (req, res) => {
 	db.Viaticos.findAll()
