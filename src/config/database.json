@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "mariofalomir",
-    "database": "testing_database",
-    "host": "127.0.0.1",
+    "username": "sql9613379",
+    "password": "ZjAUe8TaRe",
+    "database": "sql9613379",
+    "host": "sql9.freemysqlhosting.net",
     "dialect": "mysql"
   },
   "test": {

@@ -1,114 +1,72 @@
 const db =  require("../models");
 const jwt = require("jsonwebtoken");
-const cookie_parser = require("cookie-parser");
+const bcrypt = require("bcrypt");
 
 const secret = "ITC_Besto_Team";
 const max_age = 60 * 60 * 24 * 14; // in seconds
 
-module.exports.login_post = (req, res) => {
-  res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+const handle_errors = (err) => {
+  let error = {
+    email: "",
+    password: ""
+  };
+
+  if (err.message === "Incorrect email") {
+    error.email = "That email is not registered";
+  };
+
+  if (err.message === "Incorrect password") {
+    error.password = "That password is incorrect";
+  };
+
+  return error;
+};
+
+const generate_token = (id) => {
+  return jwt.sign({ id }, secret, {
+    expiresIn: max_age
+  });
+};
+
+const user_login = async (email, password)  => {
+  const user = await db.Empleados.findOne({where: {correoElectronico: email}});
+  
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password);
+
+    if (auth) {
+
+      return user;
+
+    } else {
+
+      throw Error("Incorrect password");
+    };
+
+  }
+
+  throw Error("Incorrect email");
+
+};
+
+module.exports.login_post = async (req, res) => {
 
   const { correoElectronico, password } = req.body;
 
-  db.Empleados.findAll({
-    where: {
-      correoElectronico
-    }
-  })
-  .then((data) => {
-    console.log(data)
-    if(data.length == 0){
-      //usuario no encontrado
-      res.json({
-      })
-    } else {
-      //usuario encontrado
-      if(data[0].password == password){
-        //Usuario y contra correcta
-        const token = jwt.sign({
-          id: data[0].ID_empleado,
-          rol: data[0].ID_rol
-        }, "ITC_Besto_Team", 
-        {
-          expiresIn: 7200
-        })
-        
-        res.json({
-          token
-        })
-        
-      } else {
-        //contraseña incorrecta
-        res.json({
-        })
-      }
-    }
-  })
-  .catch((err) => {
+  try {
+    const user = await user_login(correoElectronico, password);
     
-    res.json({
-      msg: err.message
-    })
-  })
-}
+    const token = generate_token(user.ID_empleado);
+    res.cookie("jwt", token, {
+      secure: true,
+      httpOnly: true,
+      maxAge: 1000 * max_age
+    });
 
-const validate = (req, res, next) => {
-  res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+    res.status(200).json({user: user.ID_empleado});
 
-  const hToken = req.headers['authorization'];
-  
-  if(hToken != undefined && hToken.startsWith('Bearer ')){
-
-    const bToken = hToken.slice(7);
-    
-    try {
-      const tValido = jwt.verify(bToken, "ITC_Besto_Team");
-      next();
-      
-    } catch (error) {
-      res.status(400).json({
-        error: 'Token denegado'
-      })
-    }
-    
-  } else {
-    res.status(400).json({
-      error: 'Accesso denegado'
-    })
+  } catch (err) {
+      const errors = handle_errors(err);
+      res.status(400).json({errors});
   }
-}
-
-
-const adminVal = (req, res) => {
-  res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
-  res.json({
-    msg:"Soy admin"
-  })
-} 
-
-const isAdmin = (req, res, next) => {
-  res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
-
-  const hToken = req.headers['authorization'];
-  const bToken = hToken.slice(7);
-
-  const parts = bToken.split('.');
-  const base64Url = parts[1];
-  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const decodedPayload = atob(base64);
-  const payload = JSON.parse(decodedPayload);
-
-  console.log(payload.role);
-
-  if(payload.rol == 3){
-
-    const bToken = hToken.slice(7);
-    next();
-    
-  } else {
-    res.status(400).json({
-      error: 'Accesso denegado, rol incorrecto'
-    })
-  }
-
 }
