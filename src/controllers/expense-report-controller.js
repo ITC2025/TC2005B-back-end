@@ -42,13 +42,42 @@ module.exports.expense_report_get_by_viatico_id = (req, res) => {
 		}
 	]
 	}).then((result) => {
-		console.log(result);
 		const gastos = result.map((gasto) => {
 			return {
 				id: gasto.ID_reporte_gasto,
 				fecha: gasto.createdAt,
 				tipo: gasto.TipoGasto.descripcion,
 				concepto: gasto.concepto,
+				total: gasto.monto
+			}
+		})
+		res.send(gastos);
+	});
+
+};
+
+module.exports.expense_report_pm_get_by_viatico_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.ReporteGastos.findAll({
+		include: [{
+			model: db.SolicitudViaticos,
+			where: {ID_solicitud_viatico : req.params.id},
+		},
+		{
+			model: db.TipoGastos
+		},
+		{
+			model: db.StatusReporteGastos,
+			where: {ID_status_reporte_gasto : 2}
+		}
+	]
+	}).then((result) => {
+		const gastos = result.map((gasto) => {
+			return {
+				id: gasto.ID_reporte_gasto,
+				fecha: gasto.createdAt,
+				concepto: gasto.concepto,
+				tipo: gasto.TipoGasto.descripcion,
 				total: gasto.monto
 			}
 		})
