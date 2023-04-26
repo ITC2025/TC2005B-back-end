@@ -1,8 +1,8 @@
 // Viatico Request routes
-let express = require("express");
-let viatico_request_controller = require("../controllers/viatico-request-controller");
+const express = require("express");
+const viatico_request_controller = require("../controllers/viatico-request-controller");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/:id", viatico_request_controller.viatico_request_get_by_id);
 router.get("/", viatico_request_controller.viatico_request_index);

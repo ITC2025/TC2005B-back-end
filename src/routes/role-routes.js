@@ -1,8 +1,8 @@
 // Role routes
-let express = require("express");
-let role_controller = require("../controllers/role-controller");
+const express = require("express");
+const role_controller = require("../controllers/role-controller");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/:id", role_controller.role_get_by_id);
 router.get("/", role_controller.role_index);

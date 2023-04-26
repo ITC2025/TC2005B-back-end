@@ -1,8 +1,8 @@
 // User routes
-let express = require("express");
-let project_user_controller = require("../controllers/project-user-controller");
+const express = require("express");
+const project_user_controller = require("../controllers/project-user-controller");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/:id", project_user_controller.project_user_get_by_id);
 router.get("/", project_user_controller.project_user_index);

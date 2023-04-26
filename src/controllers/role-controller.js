@@ -6,7 +6,7 @@
 // 	- role_delete
 // 	- role_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.role_index = (req, res) => {
 	db.Roles.findAll()

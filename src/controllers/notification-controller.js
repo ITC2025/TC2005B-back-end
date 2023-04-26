@@ -6,7 +6,7 @@
 // 	- notification_delete
 // 	- notification_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.notification_index = (req, res) => {
 	db.Notificaciones.findAll()

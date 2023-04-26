@@ -6,7 +6,7 @@
 // 	- account_delete
 // 	- account_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.account_index = (req, res) => {
 	db.Cuentas.findAll()

@@ -6,7 +6,7 @@
 // 	- expense_record_delete
 // 	- expense_record_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.expense_record_index = (req, res) => {
 	db.HistorialGastos.findAll()
