@@ -1,7 +1,9 @@
 // Controller for expense report:
+//Reporte de Gastos
 
 // 	- expense_report_index
 // 	- expense_report_get_by_id
+//  - expense_report_get_by_viatico_id
 // 	- expense_report_create
 // 	- expense_report_delete
 // 	- expense_report_update
@@ -25,6 +27,33 @@ module.exports.expense_report_get_by_id = (req, res) => {
 	}).then((result) => {
 			res.send(result);
 	});
+};
+
+module.exports.expense_report_get_by_viatico_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.ReporteGastos.findAll({
+		include: [{
+			model: db.SolicitudViaticos,
+			where: {ID_solicitud_viatico : req.params.id},
+		},
+		{
+			model: db.TipoGastos
+		}
+	]
+	}).then((result) => {
+		console.log(result);
+		const gastos = result.map((gasto) => {
+			return {
+				id: gasto.ID_reporte_gasto,
+				fecha: gasto.createdAt,
+				tipo: gasto.TipoGasto.descripcion,
+				concepto: gasto.concepto,
+				total: gasto.monto
+			}
+		})
+		res.send(gastos);
+	});
+
 };
 
 
