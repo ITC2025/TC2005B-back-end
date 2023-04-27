@@ -12,7 +12,7 @@ app.use(morgan('dev'))
 app.use(express.json());
 app.use(cookie_parser());
 app.use(cors({
-    origin: "http://127.0.0.1:3000",
+    origin: "*",
     credentials: true
 }));
 
