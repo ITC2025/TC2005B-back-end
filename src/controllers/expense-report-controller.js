@@ -45,7 +45,7 @@ module.exports.expense_report_get_by_viatico_id = (req, res) => {
 		const gastos = result.map((gasto) => {
 			return {
 				id: gasto.ID_reporte_gasto,
-				fecha: gasto.createdAt,
+				fecha: gasto.fecha,
 				tipo: gasto.TipoGasto.descripcion,
 				concepto: gasto.concepto,
 				total: gasto.monto
