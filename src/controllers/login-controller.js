@@ -60,10 +60,7 @@ module.exports.login_post = async (req, res) => {
     res.cookie("jwt", token, {
       secure: true,
       httpOnly: true,
-      maxAge: 1000 * max_age,
-      withCredentials: true,
-      credentials: 'include',
-      sameSite: 'none',
+      maxAge: 1000 * max_age
     });
 
     res.status(200).json({user: user.ID_empleado});
