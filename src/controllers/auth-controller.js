@@ -10,7 +10,7 @@ const get_role = (req, res) => {
 		jwt.verify(token, secret, async (err, decoded_token) => {
 			if (err) {
 				console.log(err);
-				res.redirect("/login");
+				res.status(400).json({errors: "Token invalid."});
 			} else {
 				const user_id = decoded_token.id;
 				const user = await db.Empleados.findOne({where : { ID_empleado : user_id }});
@@ -21,7 +21,7 @@ const get_role = (req, res) => {
 		});
 
 	} else {
-		res.redirect("/login");
+		res.status(400).json({errors: "Not logged in."});
 	}
 };
 
