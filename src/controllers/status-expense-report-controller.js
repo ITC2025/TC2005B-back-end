@@ -6,7 +6,7 @@
 // 	- status_expense_report_delete
 // 	- status_expense_report_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.status_expense_report_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);

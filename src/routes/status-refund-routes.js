@@ -1,8 +1,8 @@
 // StatusReembolso routes
-let express = require("express");
-let status_refund_controller = require("../controllers/status-refund-controller");
+const express = require("express");
+const status_refund_controller = require("../controllers/status-refund-controller");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/:id", status_refund_controller.status_refund_get_by_id);
 router.get("/", status_refund_controller.status_refund_index);

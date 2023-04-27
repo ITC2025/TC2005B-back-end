@@ -6,7 +6,7 @@
 // 	- account_delete
 // 	- account_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.account_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
