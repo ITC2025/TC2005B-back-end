@@ -14,6 +14,7 @@ const get_role = (req, res) => {
 			} else {
 				const user_id = decoded_token.id;
 				const user = await db.Empleados.findOne({where : { ID_empleado : user_id }});
+				console.log(user.ID_rol);
 
 				res.send({role: user.ID_rol});
 			}
