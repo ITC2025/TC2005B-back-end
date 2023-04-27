@@ -62,7 +62,8 @@ module.exports.login_post = async (req, res) => {
       httpOnly: true,
       maxAge: 1000 * max_age,
       withCredentials: true,
-      credentials: 'include'
+      credentials: 'include',
+      sameSite: 'none',
     });
 
     res.status(200).json({user: user.ID_empleado});
