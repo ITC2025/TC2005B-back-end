@@ -6,7 +6,7 @@
 // 	- type_expense_delete
 // 	- type_expense_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.type_expense_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);

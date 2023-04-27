@@ -6,7 +6,7 @@
 // 	- status_refund_delete
 // 	- status_refund_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.status_refund_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);

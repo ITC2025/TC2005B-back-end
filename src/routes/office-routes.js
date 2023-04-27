@@ -1,8 +1,8 @@
 // Office routes
-let express = require("express");
-let office_controller = require("../controllers/office-controller");
+const express = require("express");
+const office_controller = require("../controllers/office-controller");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/:id", office_controller.office_get_by_id);
 router.get("/", office_controller.office_index);

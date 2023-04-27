@@ -1,8 +1,8 @@
 // Notification routes
-let express = require("express");
-let notification_controller = require("../controllers/notification-controller");
+const express = require("express");
+const notification_controller = require("../controllers/notification-controller");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/:id", notification_controller.notification_get_by_id);
 router.get("/", notification_controller.notification_index);
