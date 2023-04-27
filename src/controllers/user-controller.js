@@ -16,7 +16,6 @@ const hash_password = async (password) => {
 	return hashed_password;
 }
 
-let db = require('../models')
 
 module.exports.userSaldoGet = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
@@ -62,6 +61,7 @@ module.exports.userViaticos = (req, res) => {
 		res.send(expenses)
 	})
 }
+
 
 module.exports.user_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
