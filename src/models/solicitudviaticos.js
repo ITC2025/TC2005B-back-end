@@ -45,6 +45,10 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     monto: DataTypes.DECIMAL,
+    descripcion: DataTypes.STRING,
+    destino: DataTypes.STRING,
+    fechaInicio: DataTypes.DATEONLY,
+    fechaTermino: DataTypes.DATEONLY,
     fechaEnvioSolicitud: DataTypes.DATE,
     fechaAprobado: DataTypes.DATE,
     createdAt: {

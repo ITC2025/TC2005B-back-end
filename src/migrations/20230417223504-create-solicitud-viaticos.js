@@ -21,7 +21,7 @@ module.exports = {
         type : Sequelize.INTEGER,
           allowNull: false,
           references: {        
-            model: 'SolicitudViaticos',
+            model: 'StatusSolicitudViaticos',
             key: 'ID_status_solicitud_viaticos'
           }
       },
@@ -35,6 +35,18 @@ module.exports = {
       },
       monto: {
         type: Sequelize.DECIMAL
+      },
+      descripcion: {
+        type: Sequelize.STRING
+      },
+      destino: {
+        type: Sequelize.STRING
+      },
+      fechaInicio: {
+        type: Sequelize.DATEONLY
+      },
+      fechaTermino: {
+        type: Sequelize.DATEONLY
       },
       fechaEnvioSolicitud: {
         type: Sequelize.DATE
