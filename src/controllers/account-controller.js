@@ -6,9 +6,10 @@
 // 	- account_delete
 // 	- account_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.account_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Cuentas.findAll()
 		.then((result) => {
 			res.send(result);
@@ -16,6 +17,7 @@ module.exports.account_index = (req, res) => {
 };
 
 module.exports.account_get_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Cuentas.findAll({
 		where : {
 			ID_cuenta: req.params.id
@@ -27,6 +29,7 @@ module.exports.account_get_by_id = (req, res) => {
 
 
 module.exports.account_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -73,6 +76,7 @@ module.exports.account_create =  (req, res) => {
 
 
 module.exports.account_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Cuentas.destroy({
 		where: {
 			ID_cuenta: req.params.id
@@ -103,6 +107,7 @@ module.exports.account_delete = (req, res) => {
 };
 
 module.exports.account_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

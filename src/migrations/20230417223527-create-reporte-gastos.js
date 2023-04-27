@@ -40,7 +40,7 @@ module.exports = {
         type: Sequelize.DECIMAL
       },
       fecha: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       imagen: {
         type: Sequelize.BLOB

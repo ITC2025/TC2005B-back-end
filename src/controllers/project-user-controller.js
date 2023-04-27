@@ -6,9 +6,10 @@
 // 	- project_user_delete
 // 	- project_user_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.project_user_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ProyectosEmpleados.findAll()
 		.then((result) => {
 			res.send(result);
@@ -16,6 +17,7 @@ module.exports.project_user_index = (req, res) => {
 };
 
 module.exports.project_user_get_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ProyectosEmpleados.findAll({
 		where : {
 			ID_proyecto_empleado: req.params.id
@@ -27,6 +29,7 @@ module.exports.project_user_get_by_id = (req, res) => {
 
 
 module.exports.project_user_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -73,6 +76,7 @@ module.exports.project_user_create =  (req, res) => {
 
 
 module.exports.project_user_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ProyectosEmpleados.destroy({
 		where: {
 			ID_proyecto_empleado: req.params.id
@@ -103,6 +107,7 @@ module.exports.project_user_delete = (req, res) => {
 };
 
 module.exports.project_user_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

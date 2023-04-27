@@ -6,9 +6,10 @@
 // 	- notification_delete
 // 	- notification_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.notification_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Notificaciones.findAll()
 		.then((result) => {
 			res.send(result);
@@ -16,6 +17,7 @@ module.exports.notification_index = (req, res) => {
 };
 
 module.exports.notification_get_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Notificaciones.findAll({
 		where : {
 			ID_notificacion: req.params.id
@@ -27,6 +29,7 @@ module.exports.notification_get_by_id = (req, res) => {
 
 
 module.exports.notification_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -73,6 +76,7 @@ module.exports.notification_create =  (req, res) => {
 
 
 module.exports.notification_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Notificaciones.destroy({
 		where: {
 			ID_notificacion: req.params.id
@@ -103,6 +107,7 @@ module.exports.notification_delete = (req, res) => {
 };
 
 module.exports.notification_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

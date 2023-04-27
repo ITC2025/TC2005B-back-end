@@ -6,16 +6,18 @@
 // 	- viaticos_record_delete
 // 	- viaticos_record_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.viaticos_record_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.HistorialViaticos.findAll()
 		.then((result) => {
 			res.send(result);
 		});
 };
 
-module.exports.viaticos_record_get_by_id = (req, res) => {	
+module.exports.viaticos_record_get_by_id = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.HistorialViaticos.findAll({
 		where : {
 			ID_historico_viatico: req.params.id
@@ -25,8 +27,44 @@ module.exports.viaticos_record_get_by_id = (req, res) => {
 	});
 };
 
+module.exports.viaticos_record_get_by_pm_id = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.HistorialViaticos.findAll({
+		where: {ID_status_solicitud_viaticos : [2,3,4]},
+		include: [
+		{
+			model: db.SolicitudViaticos,
+			include: [
+			{
+				model: db.Proyectos,
+				where: {ID_empleado : req.params.id}
+			},
+			{
+				model: db.Empleados
+			}]
+		},
+		{
+			model: db.StatusSolicitudViaticos
+		}],
+	}).then((result) => {
+		const registros = result.map((registro) => {
+			return {
+				fechaModificacion: registro.fechaModificacion,
+				ID_Solicitud: registro.ID_solicitud_viatico,
+				descripcionSolicitud: registro.descripcion,
+				codigoProyecto: registro.SolicitudViatico.Proyecto.codigoProyecto,
+				descripcionProyecto: registro.SolicitudViatico.Proyecto.descripcion,
+				nombreEmpleado: registro.SolicitudViatico.Empleado.name,
+				apellidoEmpleado : registro.SolicitudViatico.Empleado.apellido,
+				status: registro.StatusSolicitudViatico.descripcion
+			}
+		})
+		res.send(registros);
+	});
+};
 
 module.exports.viaticos_record_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -74,6 +112,7 @@ module.exports.viaticos_record_create =  (req, res) => {
 
 
 module.exports.viaticos_record_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.HistorialViaticos.destroy({
 		where: {
 			ID_historico_viatico: req.params.id
@@ -104,6 +143,7 @@ module.exports.viaticos_record_delete = (req, res) => {
 };
 
 module.exports.viaticos_record_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

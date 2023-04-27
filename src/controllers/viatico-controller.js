@@ -6,9 +6,10 @@
 // 	- viatico_delete
 // 	- viatico_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.viatico_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Viaticos.findAll()
 		.then((result) => {
 			res.send(result);
@@ -16,6 +17,7 @@ module.exports.viatico_index = (req, res) => {
 };
 
 module.exports.viatico_get_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Viaticos.findAll({
 		where : {
 			ID_viatico: req.params.id
@@ -27,6 +29,7 @@ module.exports.viatico_get_by_id = (req, res) => {
 
 
 module.exports.viatico_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -74,6 +77,7 @@ module.exports.viatico_create =  (req, res) => {
 
 
 module.exports.viatico_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Viaticos.destroy({
 		where: {
 			ID_viatico: req.params.id
@@ -104,6 +108,7 @@ module.exports.viatico_delete = (req, res) => {
 };
 
 module.exports.viatico_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

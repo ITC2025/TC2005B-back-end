@@ -6,9 +6,10 @@
 // 	- role_delete
 // 	- role_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.role_index = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Roles.findAll()
 		.then((result) => {
 			res.send(result);
@@ -16,6 +17,7 @@ module.exports.role_index = (req, res) => {
 };
 
 module.exports.role_get_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Roles.findAll({
 		where : {
 			ID_rol: req.params.id
@@ -27,6 +29,7 @@ module.exports.role_get_by_id = (req, res) => {
 
 
 module.exports.role_create =  (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -72,6 +75,7 @@ module.exports.role_create =  (req, res) => {
 
 
 module.exports.role_delete = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Roles.destroy({
 		where: {
 			ID_rol: req.params.id
@@ -102,6 +106,7 @@ module.exports.role_delete = (req, res) => {
 };
 
 module.exports.role_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
