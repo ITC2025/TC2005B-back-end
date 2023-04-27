@@ -11,8 +11,10 @@ const port = 3001
 app.use(morgan('dev'))
 app.use(express.json());
 app.use(cookie_parser());
-app.use(cors());
-app.options("*", cors());
+app.use(cors({
+    origin: "http://127.0.0.1:3000",
+    credentials: true
+}));
 
 app.use(app_router);
 
