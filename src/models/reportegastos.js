@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     concepto: DataTypes.STRING,
     monto: DataTypes.DECIMAL,
-    fecha: DataTypes.DATE,
+    fecha: DataTypes.DATEONLY,
     imagen: DataTypes.BLOB,
     createdAt: {
         allowNull: false,

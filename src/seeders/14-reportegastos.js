@@ -13,7 +13,7 @@ module.exports = {
         ID_status_reporte_gasto: 3,
         concepto: 'Vuelo Redondo',
         monto: 6432.17,
-        fecha: new Date('2023-04-16 00:00:00'),
+        fecha: new Date('2023-04-16'),
         imagen: 'imagen.url',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -25,7 +25,7 @@ module.exports = {
         ID_status_reporte_gasto: 2,
         concepto: 'Hotel California',
         monto: 4799,
-        fecha: new Date('2023-04-18 00:00:00'),
+        fecha: new Date('2023-04-18'),
         imagen: 'imagen.url',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -37,7 +37,7 @@ module.exports = {
         ID_status_reporte_gasto: 1,
         concepto: 'Cena Mochomos',
         monto: 530,
-        fecha: new Date('2023-04-18 00:00:00'),
+        fecha: new Date('2023-04-18'),
         imagen: 'imagen.url',
         createdAt: new Date(),
         updatedAt: new Date()
