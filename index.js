@@ -5,7 +5,12 @@ const app_router = require("./src/routes/index");
 const cookie_parser = require("cookie-parser");
 
 const app = express()
-const port = 3001 //Dejen esto en el puerto 3001 por favor
+const port = 3001
+
+app.use(morgan('dev'))
+app.use(express.json());
+app.use(cookie_parser());
+app.use(app_router);
 
 db.sequelize.sync()
  .then(() => {

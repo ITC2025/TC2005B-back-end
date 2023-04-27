@@ -62,6 +62,7 @@ module.exports.userViaticos = (req, res) => {
 	})
 }
 
+
 module.exports.user_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.findAll()
