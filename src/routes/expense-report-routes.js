@@ -7,6 +7,7 @@ let router = express.Router();
 router.get("/:id", expense_report_controller.expense_report_get_by_id);
 router.get("/", expense_report_controller.expense_report_index);
 router.get("/vi/:id", expense_report_controller.expense_report_get_by_viatico_id);
+router.get("/pm/:id", expense_report_controller.expense_report_pm_get_by_viatico_id);
 router.patch("/:id", expense_report_controller.expense_report_update);
 router.post("/", expense_report_controller.expense_report_create);
 router.delete("/:id", expense_report_controller.expense_report_delete);
