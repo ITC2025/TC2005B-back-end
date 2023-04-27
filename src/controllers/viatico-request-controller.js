@@ -8,6 +8,7 @@
 
 const { stat } = require('fs');
 let db = require('../models')
+const db = require('../models')
 
 module.exports.viatico_request_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);

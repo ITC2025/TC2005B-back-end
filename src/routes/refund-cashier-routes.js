@@ -1,8 +1,8 @@
 // Refund cashier routes
-let express = require("express");
-let refund_cashier_controller = require("../controllers/refund-cashier-controller");
+const express = require("express");
+const refund_cashier_controller = require("../controllers/refund-cashier-controller");
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/:id", refund_cashier_controller.refund_cashier_get_by_id);
 router.get("/", refund_cashier_controller.refund_cashier_index);

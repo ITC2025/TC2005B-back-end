@@ -6,7 +6,7 @@
 // 	- status_viatico_request_delete
 // 	- status_viatico_request_update
 
-let db = require('../models')
+const db = require('../models')
 
 module.exports.status_viatico_request_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
