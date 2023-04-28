@@ -45,7 +45,7 @@ const is_admin = (req, res, next) => {
 		jwt.verify(token, secret, async (err, decoded_token) => {
 			if (err) {
 				console.log(err);
-				res.redirect("/");
+				res.status(400).json({errors: "Token invalid."});
 			} else {
 				const user_id = decoded_token.id;
 				const user = await db.Empleados.findOne({where : { ID_empleado : user_id }});
@@ -53,13 +53,13 @@ const is_admin = (req, res, next) => {
 				if (user && user.ID_rol === 3) {
 					next();
 				} else {
-					res.redirect("/");
+					res.status(400).json({errors: "Token invalid."});
 				};
 			}
 		});
 
 	} else {
-		res.redirect("/");
+		res.status(400).json({errors: "Token invalid."});
 	}
 
 };
