@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     codigoProyecto: DataTypes.STRING,
+    nombre: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     createdAt: {
         allowNull: false,
