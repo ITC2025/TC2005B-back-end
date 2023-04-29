@@ -18,7 +18,7 @@ module.exports = {
         apellido: 'Perez',
         telefono: 6621234567,
         correoElectronico: 'joseperez@gmail.com',
-        password: 'Jose1234',
+        password: '$2b$10$6Hr3FXWElg4fjBXg3aMqD.v5BjajUrapXcxP3n4d7kHbyTnh5S1Ai',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -30,7 +30,7 @@ module.exports = {
         apellido: 'Islas',
         telefono: 6448402814,
         correoElectronico: 'carlosislas@hotmail.com',
-        password: 'Carlos1234',
+        password: '$2b$10$qJdB7VMcsryEVc54IqFBOeOJNZA87XxilVvj7xVWBVxYy7HfnQiPC',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -42,7 +42,7 @@ module.exports = {
         apellido: 'Martinez',
         telefono: 5584610040,
         correoElectronico: 'ivan_martinez@gmail.com',
-        password: 'Ivan1234',
+        password: '$2b$10$tiquXcTpFEzBsJ/gfbfXgeI5dKGkNMLcaBqPU.8AwscJUmUYcYVGm',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -54,7 +54,7 @@ module.exports = {
         apellido: 'Sanchez',
         telefono: 6622038461,
         correoElectronico: 'JULIA.sanchez@yahoo.com.mx',
-        password: 'Julia1234',
+        password: '$2b$10$wtdIVVqa5XoR0Tns59LVeuuQ0daptsj5cmqoEtQ3miEWvBcS2/U1K',
         createdAt: new Date(),
         updatedAt: new Date()
       }

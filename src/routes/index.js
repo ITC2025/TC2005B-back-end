@@ -25,7 +25,7 @@ const login_route = require("./LoginRoutes");
 
 const app_router = express.Router(); 
 
-app_router.use("/login", login_routes);
+app_router.use("/", login_routes);
 app_router.use("/auth", auth_routes);
 app_router.use("/users", user_routes);
 app_router.use("/roles", role_routes);
