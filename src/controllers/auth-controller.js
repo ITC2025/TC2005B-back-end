@@ -35,7 +35,8 @@ const get_id = (req, res) => {
 				res.status(400).json({errors: "Token invalid."});
 			} else {
 				const user_id = decoded_token.id;
-				res.send({role: user_id});
+				console.log(user_id);
+				res.send({id: user_id});
 			}
 		});
 
