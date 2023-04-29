@@ -153,7 +153,6 @@ module.exports.viaticos_record_update = (req, res) => {
 
 		return;
 	};
-
 	db.HistorialViaticos.update(req.body, {
 		where: {
 			ID_historico_viatico: req.params.id
