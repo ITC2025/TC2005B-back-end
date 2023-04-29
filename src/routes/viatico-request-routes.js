@@ -10,6 +10,7 @@ router.get("/", viatico_request_controller.viatico_request_index);
 router.patch("/:id", viatico_request_controller.viatico_request_update);
 router.post("/", viatico_request_controller.viatico_request_create);
 router.delete("/:id", viatico_request_controller.viatico_request_delete);
+router.get("/gt/:id", viatico_request_controller.viatico_request_expensestable_by_id);
 
 router.post("/solicitar",viatico_request_controller.solicitar_viatico)
 

@@ -5,6 +5,7 @@
 // 	- viatico_request_create (without dates)
 // 	- viatico_request_delete
 // 	- viatico_request_update
+//  - viatico_request_expensestable_by_id 
 
 const { stat } = require('fs');
 let db = require('../models')
@@ -220,4 +221,23 @@ module.exports.solicitar_viatico = async (req, res) => {
 				payload: null
 			});
 		});
+};
+
+module.exports.viatico_request_expensestable_by_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.SolicitudViaticos.findAll({
+		where : {
+			ID_solicitud_viatico: req.params.id
+		}
+	}).then((result) => {
+		const viaticos = result.map((viatico) => {
+			return {
+				id: viatico.ID_proyecto,
+				fechaInicio: viatico.fechaInicio,
+				fechaTermino: viatico.fechaTermino,
+				anticipo: viatico.monto
+			}
+		})
+		res.send(viaticos);;
+	});
 };
