@@ -70,3 +70,12 @@ module.exports.login_post = async (req, res) => {
       res.status(400).json({errors});
   }
 }
+
+module.exports.logout_post = async (req, res) => {
+  try {
+    res.clearCookie("jwt");
+    res.status(200).json({});
+  } catch (err) {
+    res.status(400).json({err});
+  }
+}
