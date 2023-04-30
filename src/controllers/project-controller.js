@@ -6,6 +6,7 @@
 // 	- project_delete
 // 	- project_update
 
+const jwt = require("jsonwebtoken");
 const db = require('../models')
 
 module.exports.project_index = (req, res) => {
@@ -40,41 +41,44 @@ module.exports.project_create =  (req, res) => {
 		return;
 	};
 
-	// Checks that no key has null value
-	// for (let key in req.body) {
-	// 	if (req.body[key] == null || req.body[key] == '') {
-	// 		res.writeHead(400, {"Content-Type": "application/json"});
-	// 		res.end(JSON.stringify({
-	// 			status: "error",
-	// 			message: `null key ${key}`
-	// 		}));
-	// 		return;
-	// 	}
-	// }
+	const secret = "ITC_Besto_Team";
+	const token = req.cookies.jwt
 
-	let project = { 
-		nombre: req.body.nombre,
-		codigoProyecto: req.body.codigoProyecto,
-        nombre: req.body.nombre,
-		descripcion: req.body.descripcion,
-        ID_empleado: req.params.id
-	};
+	if (token) {
+		jwt.verify(token, secret, async (err, decoded_token) => {
+			if (err) {
+				console.log(err);
+				res.status(400).json({errors: "Token invalid."});
+			} else {
+				let project = { 
+					nombre: req.body.nombre,
+					codigoProyecto: req.body.codigoProyecto,
+					descripcion: req.body.descripcion,
+					ID_empleado: decoded_token.id
+				};
+				
 
-	db.Proyectos.create(project)
-		.then((data) => {
-			res.status(200).json({
-				status: "success",
-				message: "Project successfully created",
-				payload: data
-			});
-		})
-		.catch((err) => {
-			res.status(500).json({
-				status: "error",
-				message: "Error creating project. " + err.message,
-				payload: null
-			});
+				db.Proyectos.create(project)
+				.then((data) => {
+					res.status(200).json({
+						status: "success",
+						message: "Project successfully created",
+						payload: data
+					});
+				})
+				.catch((err) => {
+					res.status(500).json({
+						status: "error",
+						message: "Error creating project. " + err.message,
+						payload: null
+					});
+				});
+			}
 		});
+
+	} else {
+		res.status(400).json({errors: "Not logged in."});
+	}
 };
 
 
