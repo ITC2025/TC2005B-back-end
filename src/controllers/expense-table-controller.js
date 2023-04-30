@@ -52,3 +52,26 @@ module.exports.expense_table = (req, res) => {
 	});
 
 };
+
+module.exports.sum = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.ReporteGastos.findAll({
+		
+		include: [{
+
+			model: db.SolicitudViaticos,
+			where: {ID_solicitud_viatico : req.params.id},
+		}
+	]
+	}).then((result) => {
+		console.log(result);
+		const gastos = result.map((gasto) => {
+			return {
+				anticipo: gasto.SolicitudViatico.monto ,
+				monto: gasto.monto
+			}
+		})
+		res.send(gastos);
+	});
+
+};
