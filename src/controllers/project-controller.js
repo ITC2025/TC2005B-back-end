@@ -53,6 +53,7 @@ module.exports.project_create =  (req, res) => {
 	// }
 
 	let project = { 
+		nombre: req.body.nombre,
 		codigoProyecto: req.body.codigoProyecto,
         descripcion: req.body.descripcion,
         ID_empleado: req.params.id
