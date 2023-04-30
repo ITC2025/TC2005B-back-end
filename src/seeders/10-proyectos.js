@@ -7,8 +7,9 @@ module.exports = {
       {
         ID_proyecto: 1,
         ID_empleado: 2,
-        codigoProyecto: 'PC890',
-        descripcion: 'PepsiCo',
+        codigoProyecto: 'FT890',
+        nombre: 'MinionCo',
+        descripcion: 'Automatización de almacén a MinionCo',
         createdAt: new Date(),
         updatedAt: new Date()
       }
