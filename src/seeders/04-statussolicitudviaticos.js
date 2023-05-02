@@ -35,7 +35,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        ID_status_solicitud_viaticos: 5,
+        ID_status_solicitud_viaticos: 6,
         descripcion: 'Rechazado',
         createdAt: new Date(),
         updatedAt: new Date()
