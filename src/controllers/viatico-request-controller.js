@@ -58,8 +58,12 @@ module.exports.viatico_request_get_by_pm_id = (req, res) => {
 	db.SolicitudViaticos.findAll({
 		include: [{
 			model: db.Proyectos,
-			where: {ID_empleado : req.params.id}
-		}]
+			where: {ID_empleado : req.params.id},
+			attributes: ["codigoProyecto"]
+		},
+			{model: db.Empleados, attributes: ["name"]},
+			{model: db.StatusSolicitudViaticos , attributes: ["descripcion"]}
+			]
 	}).then((result) => {
 		res.send(result);
 	});
