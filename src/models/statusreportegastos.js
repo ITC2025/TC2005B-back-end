@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   StatusReporteGastos.init({
     ID_status_reporte_gasto: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
+      allowNull: false,
       autoIncrement: true,
       primaryKey: true
     },
