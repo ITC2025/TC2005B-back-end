@@ -9,6 +9,39 @@
 const { stat } = require('fs');
 let db = require('../models')
 
+module.exports.project_admin = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.SolicitudViaticos.findAll({
+		include: [
+			{
+				model: db.Proyectos
+			},
+			{
+				model: db.Empleados
+			},
+			{
+				model: db.StatusSolicitudViaticos,
+				where:{descripcion: "Aprobado"}
+			}
+		]
+	})
+		.then((data) => {
+
+			const result = data.map((expenses) => {
+				return {
+					ID:expenses.ID_solicitud_viatico,
+					fecha:expenses.fechaEnvioSolicitud,
+					fechaAprob:expenses.fechaAprobado,
+					responsable:expenses.Empleado.name,
+					proyecto:expenses.Proyecto.codigoProyecto,
+					desc:expenses.descripcion,
+					total:expenses.monto
+				}
+			})
+			res.send(result);
+		});
+};
+
 module.exports.viatico_request_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.SolicitudViaticos.findAll({
@@ -80,6 +113,22 @@ module.exports.viatico_request_get_by_pm_id = (req, res) => {
 			{model: db.Empleados, attributes: ["name"]},
 			{model: db.StatusSolicitudViaticos , attributes: ["descripcion"]}
 			]
+	}).then((result) => {
+		res.send(result);
+	});
+
+};
+
+module.exports.viatico_request_get_by_project_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.SolicitudViaticos.findAll({
+		where: {ID_proyecto : req.params.id},
+		include: [{
+			model: db.Proyectos
+		},
+		{
+			model: db.StatusSolicitudViaticos
+		}]
 	}).then((result) => {
 		res.send(result);
 	});
