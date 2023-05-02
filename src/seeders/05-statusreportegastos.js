@@ -12,7 +12,7 @@ module.exports = {
       },
       {
         ID_status_reporte_gasto: 2,
-        descripcion: 'Enviado',
+        descripcion: 'En revisión',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -25,6 +25,12 @@ module.exports = {
       {
         ID_status_reporte_gasto: 4,
         descripcion: 'Rechazado',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ID_status_reporte_gasto: 5,
+        descripcion: 'Borrado',
         createdAt: new Date(),
         updatedAt: new Date()
       }

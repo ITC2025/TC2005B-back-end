@@ -47,7 +47,7 @@ module.exports = {
       {
         ID_historico_gasto: 6,
         ID_reporte_gasto: 4,
-        ID_status_reporte_gasto: 4,
+        ID_status_reporte_gasto: 5,
         fechaModificacion: new Date('2023-04-28 13:19:55'),
         createdAt: new Date(),
         updatedAt: new Date()

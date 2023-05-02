@@ -39,7 +39,7 @@ module.exports = {
       {
         ID_solicitud_viatico: 47,
         ID_empleado: 1,
-        ID_status_solicitud_viaticos: 3,
+        ID_status_solicitud_viaticos: 1,
         ID_proyecto: 1,
         monto: 5000,
         descripcion: "No lo se, No me han dicho",
@@ -54,7 +54,7 @@ module.exports = {
       {
         ID_solicitud_viatico: 48,
         ID_empleado: 3,
-        ID_status_solicitud_viaticos: 4,
+        ID_status_solicitud_viaticos: 5,
         ID_proyecto: 5,
         monto: 1000000000,
         descripcion: "Robar la luna",
@@ -69,7 +69,7 @@ module.exports = {
       {
         ID_solicitud_viatico: 49,
         ID_empleado: 4,
-        ID_status_solicitud_viaticos: 3,
+        ID_status_solicitud_viaticos: 4,
         ID_proyecto: 4,
         monto: 10000,
         descripcion: "Viaje a Alaska",

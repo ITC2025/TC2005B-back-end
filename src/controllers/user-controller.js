@@ -51,10 +51,12 @@ module.exports.userViaticos = (req, res) => {
 		const expenses = data.map((expenses) => {
 			return {
 				ID:expenses.ID_solicitud_viatico,
-				fecha:expenses.fechaEnvioSolicitud,
+				fechaInicio:expenses.fechaInicio,
+				fechaTermino:expenses.fechaTermino,
 				proyecto: expenses.Proyecto.codigoProyecto,
 				descripcion: expenses.Proyecto.descripcion,
 				total: expenses.monto,
+				estadoID: expenses.ID_status_solicitud_viaticos,
 				estado: expenses.StatusSolicitudViatico.descripcion
 			}
 		})
