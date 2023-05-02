@@ -27,6 +27,12 @@ module.exports = {
         descripcion: 'Rechazado',
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        ID_status_reporte_gasto: 5,
+        descripcion: 'Borrado',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {});
   },
