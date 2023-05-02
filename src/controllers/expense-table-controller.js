@@ -45,9 +45,11 @@ module.exports.expense_table = (req, res) => {
 				fecha: gasto.fecha,
 				tipo: gasto.TipoGasto.descripcion,
 				concepto: gasto.concepto,
-				total: gasto.monto
+				total: gasto.monto,
+				imagen: gasto.imagen
 			}
 		})
+		console.log(gastos);
 		res.send(gastos);
 	});
 
