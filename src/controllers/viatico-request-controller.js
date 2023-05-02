@@ -30,34 +30,20 @@ module.exports.viatico_request_get_by_id = (req, res) => {
 
 module.exports.viatico_request_get_by_user_id = (req, res) => {	
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
-	const secret = "ITC_Besto_Team";
-	const token = req.cookies.jwt
-	
-	if (token) {
-		jwt.verify(token, secret, async (err, decoded_token) => {
-			if (err) {
-				console.log(err);
-				res.status(400).json({errors: "Token invalid."});
-			} else {
-				db.SolicitudViaticos.findAll({
-					where: {
-						ID_empleado : req.params.id
-					},
-					include: [{
-						model: db.Proyectos
-					},
-					{
-						model: db.StatusSolicitudViaticos
-					}]
-				}).then((result) => {
-					res.send(result);
-				});
-			}
-		});
+	db.SolicitudViaticos.findAll({
+		where: {
+			ID_empleado : req.params.id
+		},
+		include: [{
+			model: db.Proyectos
+		},
+		{
+			model: db.StatusSolicitudViaticos
+		}]
+	}).then((result) => {
+		res.send(result);
+	});
 
-	} else {
-		res.status(400).json({errors: "Not logged in."});
-	}
 };
 
 module.exports.viatico_request_get_by_pm_id = (req, res) => {	
