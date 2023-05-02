@@ -18,12 +18,18 @@ module.exports = {
       },
       {
         ID_status_reporte_gasto: 3,
-        descripcion: 'Aprobado',
+        descripcion: 'Aprobado por PM',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         ID_status_reporte_gasto: 4,
+        descripcion: 'Aprobado por Admin',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ID_status_reporte_gasto: 5,
         descripcion: 'Rechazado',
         createdAt: new Date(),
         updatedAt: new Date()
