@@ -8,8 +8,26 @@ module.exports = {
         ID_proyecto: 1,
         ID_empleado: 2,
         codigoProyecto: 'FT890',
-        nombre: 'MinionCo',
+        nombre: 'PepsiCo',
         descripcion: 'Automatización de almacén a MinionCo',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ID_proyecto: 4,
+        ID_empleado: 2,
+        codigoProyecto: 'PC1010',
+        nombre: 'MinionCo',
+        descripcion: 'Proyecto de Pepsi',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ID_proyecto: 5,
+        ID_empleado: 2,
+        codigoProyecto: 'MC1756',
+        nombre: 'Recursos Humanos',
+        descripcion: 'Recursos Humanos',
         createdAt: new Date(),
         updatedAt: new Date()
       }
