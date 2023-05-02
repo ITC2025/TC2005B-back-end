@@ -25,4 +25,24 @@ const get_role = (req, res) => {
 	}
 };
 
-module.exports = { get_role };
+const get_id = (req, res) => {
+	const token = req.cookies.jwt;
+
+	if (token) {
+		jwt.verify(token, secret, async (err, decoded_token) => {
+			if (err) {
+				console.log(err);
+				res.status(400).json({errors: "Token invalid."});
+			} else {
+				const user_id = decoded_token.id;
+				res.send({id: user_id});
+			}
+		});
+
+	} else {
+		res.status(400).json({errors: "Not logged in."});
+	}
+};
+
+
+module.exports = { get_role, get_id };
