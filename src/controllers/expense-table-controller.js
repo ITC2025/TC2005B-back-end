@@ -46,7 +46,6 @@ module.exports.expense_table = (req, res) => {
 				tipo: gasto.TipoGasto.descripcion,
 				concepto: gasto.concepto,
 				total: gasto.monto,
-				imagen: gasto.imagen
 			}
 		})
 		console.log(gastos);
@@ -61,5 +60,21 @@ module.exports.sum = (req, res) => {
 	.then((resultado => {
 		res.send({monto : resultado})
 	}))
+
+};
+
+module.exports.expense_image = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.ReporteGastos.findAll({
+		where: {ID_reporte_gasto : req.params.id},
+	}).then((result) => {
+		const gastos = result.map((gasto) => {
+			return {
+				imagen: gasto.imagen
+			}
+		})
+		console.log(gastos);
+		res.send(gastos);
+	});
 
 };
