@@ -18,7 +18,7 @@ app.use(cors({
 
 app.use(app_router);
 
-db.sequelize.sync({alter:true})
+db.sequelize.sync()
  .then(() => {
  console.log("Synced db.");
  })
