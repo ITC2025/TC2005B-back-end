@@ -1,8 +1,9 @@
 const express = require("express");
-const { get_role } = require("../controllers/auth-controller");
+const { get_role, get_id } = require("../controllers/auth-controller");
 
 const router = express.Router();
 
-router.get('/', get_role);
+router.get('/rol', get_role);
+router.get("/id", get_id);
 
 module.exports = router;
