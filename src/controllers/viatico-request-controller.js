@@ -18,6 +18,10 @@ module.exports.project_admin = (req, res) => {
 			},
 			{
 				model: db.Empleados
+			},
+			{
+				model: db.StatusSolicitudViaticos,
+				where:{descripcion: "Aprobado"}
 			}
 		]
 	})
@@ -47,6 +51,10 @@ module.exports.viatico_request_index = (req, res) => {
 			},
 			{
 				model: db.Empleados
+			},
+			{
+				model: db.StatusSolicitudViaticos,
+				where:{descripcion: "Aprobado"}
 			}
 		]
 	})
@@ -78,22 +86,20 @@ module.exports.viatico_request_get_by_id = (req, res) => {
 	});
 };
 
-module.exports.viatico_request_get_by_user_id = (req, res) => {	
+module.exports.viatico_request_get_by_project = (req, res) => {	
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.SolicitudViaticos.findAll({
-		where: {
-			ID_empleado : req.params.id
-		},
 		include: [{
-			model: db.Proyectos
+			model: db.Proyectos,
+			where: {ID_empleado : req.params.id, codigoProyecto: req.params.code},
+			attributes: ["codigoProyecto"]
 		},
-		{
-			model: db.StatusSolicitudViaticos
-		}]
+			{model: db.Empleados, attributes: ["name"]},
+			{model: db.StatusSolicitudViaticos , attributes: ["descripcion"]}
+			]
 	}).then((result) => {
-		res.send(result);
+			res.send(result);
 	});
-
 };
 
 module.exports.viatico_request_get_by_pm_id = (req, res) => {	
@@ -102,22 +108,6 @@ module.exports.viatico_request_get_by_pm_id = (req, res) => {
 		include: [{
 			model: db.Proyectos,
 			where: {ID_empleado : req.params.id}
-		}]
-	}).then((result) => {
-		res.send(result);
-	});
-
-};
-
-module.exports.viatico_request_get_by_project_id = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
-	db.SolicitudViaticos.findAll({
-		where: {ID_proyecto : req.params.id},
-		include: [{
-			model: db.Proyectos
-		},
-		{
-			model: db.StatusSolicitudViaticos
 		}]
 	}).then((result) => {
 		res.send(result);
