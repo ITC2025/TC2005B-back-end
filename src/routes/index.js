@@ -21,7 +21,7 @@ const project_user_routes = require("./project-user-routes");
 const refund_cashier_routes = require("./refund-cashier-routes");
 const refund_user_routes = require("./refund-user-routes");
 const viaticos_records_routes = require("./viaticos-records-routes");
-const login_route = require("./LoginRoutes");
+const expense_table_routes = require("./expense-table-routes");
 
 const app_router = express.Router(); 
 
@@ -45,6 +45,7 @@ app_router.use("/project_user", project_user_routes);
 app_router.use("/refund_cashier", refund_cashier_routes);
 app_router.use("/refund_user", refund_user_routes);
 app_router.use("/viaticos_records", viaticos_records_routes);
+app_router.use("/expenses_table", expense_table_routes);
 
 
 app_router.use(home_routes);

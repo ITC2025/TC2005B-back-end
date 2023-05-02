@@ -177,18 +177,6 @@ module.exports.solicitar_viatico = async (req, res) => {
 		return;
 	};
 
-	// Checks that no key has null value
-	// for (let key in req.body) {
-	// 	if (req.body[key] == null || req.body[key] == '') {
-	// 		res.writeHead(400, {"Content-Type": "application/json"});
-	// 		res.end(JSON.stringify({
-	// 			status: "error",
-	// 			message: `null key ${key}`
-	// 		}));
-	// 		return;
-	// 	}
-	// }
-
 	//Buscar empleado por nombre
 	let empleado = await db.Empleados.findOne({ where: { name: req.body.nombre_empleado } });
 	let proyecto = await db.Proyectos.findOne({ where: { codigoProyecto: req.body.codigo_proyecto }})
@@ -200,6 +188,11 @@ module.exports.solicitar_viatico = async (req, res) => {
 
 	let viatico_request = { 
 		monto: req.body.monto,
+		descripcion: req.body.descripcion,
+		destino: req.body.destino,
+		fechaInicio: req.body.fechaInicio,
+		fechaTermino: req.body.fechaTermino,
+		fechaEnvioSolicitud: new Date(),
         ID_empleado: empleado.ID_empleado,
         ID_proyecto: proyecto.ID_proyecto,
         ID_status_solicitud_viaticos: status.ID_status_solicitud_viaticos
@@ -221,3 +214,4 @@ module.exports.solicitar_viatico = async (req, res) => {
 			});
 		});
 };
+
