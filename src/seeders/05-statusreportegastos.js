@@ -12,7 +12,7 @@ module.exports = {
       },
       {
         ID_status_reporte_gasto: 2,
-        descripcion: 'Enviado',
+        descripcion: 'En revisión',
         createdAt: new Date(),
         updatedAt: new Date()
       },
