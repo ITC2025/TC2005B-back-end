@@ -53,6 +53,22 @@ module.exports.viatico_request_get_by_id = (req, res) => {
 	});
 };
 
+module.exports.viatico_request_get_by_project = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.SolicitudViaticos.findAll({
+		include: [{
+			model: db.Proyectos,
+			where: {ID_empleado : req.params.id, codigoProyecto: req.params.code},
+			attributes: ["codigoProyecto"]
+		},
+			{model: db.Empleados, attributes: ["name"]},
+			{model: db.StatusSolicitudViaticos , attributes: ["descripcion"]}
+			]
+	}).then((result) => {
+			res.send(result);
+	});
+};
+
 module.exports.viatico_request_get_by_pm_id = (req, res) => {	
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.SolicitudViaticos.findAll({
