@@ -12,19 +12,25 @@ module.exports = {
       },
       {
         ID_status_solicitud_viaticos: 2,
-        descripcion: 'Enviado',
+        descripcion: 'En revisión',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         ID_status_solicitud_viaticos: 3,
-        descripcion: 'Aprobado por PM',
+        descripcion: 'Aprobado',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         ID_status_solicitud_viaticos: 4,
-        descripcion: 'Aprobado por Admin',
+        descripcion: 'Pagado',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ID_status_solicitud_viaticos: 5,
+        descripcion: 'Cerrado',
         createdAt: new Date(),
         updatedAt: new Date()
       },
