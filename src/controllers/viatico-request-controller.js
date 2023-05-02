@@ -18,6 +18,10 @@ module.exports.viatico_request_index = (req, res) => {
 			},
 			{
 				model: db.Empleados
+			},
+			{
+				model: db.StatusSolicitudViaticos,
+				where:{descripcion: "Aprobado"}
 			}
 		]
 	})
