@@ -5,10 +5,19 @@ const app_router = require("./src/routes/index");
 const cookie_parser = require("cookie-parser");
 const cors = require("cors");
 
-const multer = require("multer");
-
 const app = express()
 const port = 3001
+
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination:'uploads/',
+    filename:(req,file,cb) => {
+        cb(null, file.originalname); //guardar archivos con su nombre original
+    }
+});
+
+app.use(multer({storage:storage, dest: 'uploads/' }).single("image"));
+
 
 app.set("view engine", "ejs");
 app.use(morgan('dev'))

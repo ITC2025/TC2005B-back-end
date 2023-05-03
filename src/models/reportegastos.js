@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    ID_solicitud_viaticos: {
+    ID_solicitud_viatico: {
       type : DataTypes.INTEGER,
       allowNull: false,
     },
