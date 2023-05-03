@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get("/:id", viatico_request_controller.viatico_request_get_by_id);
-//router.get("/user/:id", viatico_request_controller.viatico_request_get_by_user_id);
+router.get("/user/:id", viatico_request_controller.viatico_request_get_by_user_id);
 router.get("/pm/:id", viatico_request_controller.viatico_request_get_by_pm_id);
 router.get("/pm/:id/:code", viatico_request_controller.viatico_request_get_by_project);
 router.get("/", viatico_request_controller.viatico_request_index);
