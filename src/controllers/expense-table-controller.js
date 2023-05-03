@@ -135,7 +135,7 @@ module.exports.expense_table_admin = (req, res) => {
 
 };
 
-module.exports.sum = (req, res) => {	
+module.exports.sum_user = (req, res) => {	
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.sum('monto', 
 	{ where : {ID_solicitud_viatico : req.params.id, ID_status_reporte_gasto: {
@@ -147,6 +147,33 @@ module.exports.sum = (req, res) => {
 	}))
 
 };
+
+module.exports.sum_pm = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.ReporteGastos.sum('monto', 
+	{ where : {ID_solicitud_viatico : req.params.id, ID_status_reporte_gasto: 2}, 
+	})
+	.then((resultado => {
+		res.send({monto : resultado})
+	}))
+
+};
+
+module.exports.sum_admin = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.ReporteGastos.sum('monto', 
+	{ where : {ID_solicitud_viatico : req.params.id, ID_status_reporte_gasto: 3}, 
+	})
+	.then((resultado => {
+		res.send({monto : resultado})
+	}))
+
+};
+
+
+
+
+
 
 module.exports.expense_image = (req, res) => {	
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
