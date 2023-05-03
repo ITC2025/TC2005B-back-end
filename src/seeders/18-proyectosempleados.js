@@ -16,6 +16,18 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        ID_proyecto: 2,
+        ID_empleado: 4,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        ID_proyecto: 3,
+        ID_empleado: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
     ], {});
   },
 
