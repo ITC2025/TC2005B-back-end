@@ -78,6 +78,7 @@ module.exports = {
         fechaTermino: new Date('2023-05-01'),
         fechaEnvioSolicitud: new Date('2023-04-18 15:03:48'),
         fechaAprobado: new Date('2023-04-20 09:32:21'),
+        referenciaBancaria: "123456789012",
         createdAt: new Date(),
         updatedAt: new Date()
       }
