@@ -14,8 +14,8 @@ router.patch("/:id", viatico_request_controller.viatico_request_update);
 router.post("/", viatico_request_controller.viatico_request_create);
 router.delete("/:id", viatico_request_controller.viatico_request_delete);
 
-
 router.get("/admin", viatico_request_controller.project_admin);
+router.get("/admin/expedientes", viatico_request_controller.viatico_request_get_by_status);
 
 router.get("/", viatico_request_controller.viatico_request_index);
 router.post("/solicitar",viatico_request_controller.solicitar_viatico);

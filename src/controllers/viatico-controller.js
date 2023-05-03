@@ -27,7 +27,6 @@ module.exports.viatico_get_by_id = (req, res) => {
 	});
 };
 
-
 module.exports.viatico_create =  (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {

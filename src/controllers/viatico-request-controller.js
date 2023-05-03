@@ -2,6 +2,7 @@
 	
 // 	- viatico_request_index
 // 	- viatico_request_get_by_id
+//  - viatico_request_get_by_status
 // 	- viatico_request_create (without dates)
 // 	- viatico_request_delete
 // 	- viatico_request_update
@@ -73,6 +74,17 @@ module.exports.viatico_request_index = (req, res) => {
 			})
 			res.send(result);
 		});
+};
+
+module.exports.viatico_request_get_by_status = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.Viaticos.findAll({
+		where : {
+			ID_status_solicitud_viaticos: [3,4,5]
+		}
+	}).then((result) => {
+			res.send(result);
+	});
 };
 
 module.exports.viatico_request_get_by_id = (req, res) => {	
