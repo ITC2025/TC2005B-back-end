@@ -16,7 +16,7 @@ router.delete("/:id", viatico_request_controller.viatico_request_delete);
 
 router.get("/admin", viatico_request_controller.project_admin);
 
-router.patch("/aceptarSol/:id", viatico_request_controller.viatico_request_update);
+router.patch("/:id", viatico_request_controller.viatico_request_update);
 router.get("/", viatico_request_controller.viatico_request_index);
 router.post("/solicitar",viatico_request_controller.solicitar_viatico);
 
