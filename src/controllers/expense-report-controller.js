@@ -6,6 +6,7 @@
 // 	- expense_report_create
 // 	- expense_report_delete
 // 	- expense_report_update
+//  - expense_report_patch_status
 
 const { stat } = require('fs');
 let db = require('../models')
@@ -225,4 +226,44 @@ module.exports.crear_reporte =  async (req, res) => {
 				payload: null
 			});
 		});
+};
+
+module.exports.expense_report_patch_status = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
+		res.status(404).json({
+			status: "error",
+			message: "Empty body",
+			payload: null
+		});
+
+		return;
+	};
+
+	db.ReporteGastos.update(req.body, {
+		where: {
+			ID_solicitud_viatico: req.params.id
+		}}).then((success) => {
+			if (success) {
+				res.status(200).json({
+					status: "success",
+					message: "Expense report successfully updated",
+					payload: req.body
+				});
+			}
+
+			else {
+				res.status(500).json({
+					status: "error",
+					message: "Expense report could not be updated",
+					payload: null
+				});
+			}
+	}).catch((err) => {
+			res.status(500).json({
+				status: "error",
+				message: "Error updating expense report. " + err.message,
+				payload: null
+			});
+	});
 };
