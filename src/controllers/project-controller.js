@@ -7,7 +7,15 @@
 // 	- project_update
 
 const jwt = require("jsonwebtoken");
-const db = require('../models')
+const db = require('../models');
+
+module.exports.project_admin = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.Proyectos.findAll()
+		.then((result) => {
+			res.send(result);
+		});
+}
 
 module.exports.project_index = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);

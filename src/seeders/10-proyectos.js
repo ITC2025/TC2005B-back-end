@@ -14,7 +14,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        ID_proyecto: 4,
+        ID_proyecto: 2,
         ID_empleado: 2,
         codigoProyecto: 'PC1010',
         nombre: 'MinionCo',
@@ -23,7 +23,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        ID_proyecto: 5,
+        ID_proyecto: 3,
         ID_empleado: 2,
         codigoProyecto: 'MC1756',
         nombre: 'Recursos Humanos',

@@ -51,7 +51,10 @@ app_router.use("/expenses_table", expense_table_routes);
 app_router.use(home_routes);
 
 app_router.all('*', (req, res) => {
-	res.send("Not found!");
+	res.status(404).json({
+		status: "Not Found",
+		payload: null
+	});
 });
 
 module.exports = app_router;
