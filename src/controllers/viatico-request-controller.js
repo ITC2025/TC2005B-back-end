@@ -78,7 +78,7 @@ module.exports.viatico_request_index = (req, res) => {
 
 module.exports.viatico_request_get_by_status = (req, res) => {	
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
-	db.Viaticos.findAll({
+	db.SolicitudViaticos.findAll({
 		where : {
 			ID_status_solicitud_viaticos: [3,4,5]
 		}
