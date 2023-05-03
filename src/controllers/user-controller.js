@@ -32,6 +32,38 @@ module.exports.userSaldoGet = (req, res) => {
 	})
 }
 
+module.exports.userSaldoPatch = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.Cuentas.update(req.body, {
+		where: {
+			ID_empleado: req.params.id
+		}
+	})
+	.then((success) => {
+		if (success) {
+			res.status(200).json({
+				status: "success",
+				message: "Viatico Request successfully updated",
+				payload: req.body
+			});
+		}
+
+		else {
+			res.status(500).json({
+				status: "error",
+				message: "Viatico Request could not be updated",
+				payload: null
+			});
+		}
+	}).catch((err) => {
+			res.status(500).json({
+				status: "error",
+				message: "Error updating Viatico Request. " + err.message,
+				payload: null
+			});
+	});
+}
+
 module.exports.userViaticos = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.SolicitudViaticos.findAll({
