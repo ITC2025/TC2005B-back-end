@@ -125,7 +125,14 @@ module.exports.viatico_request_get_by_pm_id = (req, res) => {
 		include: [{
 			model: db.Proyectos,
 			where: {ID_empleado : req.params.id}
-		}]
+		},
+		{
+			model: db.Empleados
+		},
+		{
+			model: db.StatusSolicitudViaticos
+		},
+	]
 	}).then((result) => {
 		res.send(result);
 	});
