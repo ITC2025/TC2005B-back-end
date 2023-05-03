@@ -252,11 +252,9 @@ module.exports.solicitar_viatico = async (req, res) => {
 	};
 
 	//Buscar empleado por nombre
-	let empleado = await db.Empleados.findOne({ where: { name: req.body.nombre_empleado } });
 	let proyecto = await db.Proyectos.findOne({ where: { codigoProyecto: req.body.codigo_proyecto }})
 	let status = await db.StatusSolicitudViaticos.findOne({ where: { descripcion: req.body.status_descripcion }})
 
-	console.log(empleado.ID_empleado)
 	console.log(proyecto.ID_proyecto)
 	console.log(status.ID_status_solicitud_viaticos)
 
@@ -267,7 +265,7 @@ module.exports.solicitar_viatico = async (req, res) => {
 		fechaInicio: req.body.fechaInicio,
 		fechaTermino: req.body.fechaTermino,
 		fechaEnvioSolicitud: new Date(),
-        ID_empleado: empleado.ID_empleado,
+        ID_empleado: req.body.ID_empleado,
         ID_proyecto: proyecto.ID_proyecto,
         ID_status_solicitud_viaticos: status.ID_status_solicitud_viaticos
 	};
