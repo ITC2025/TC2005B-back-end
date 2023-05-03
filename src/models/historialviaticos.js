@@ -28,6 +28,14 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
+    ID_solicitud_viaticos: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+    },
+    ID_status_solicitud_viaticos: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+    },
     fechaModificacion: DataTypes.DATE,
     createdAt: {
         allowNull: false,

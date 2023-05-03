@@ -28,6 +28,14 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
     },
+    ID_empleado: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+    },
+    ID_proyecto: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+    },
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
