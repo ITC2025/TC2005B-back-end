@@ -10,13 +10,13 @@ router.get("/user/:id", viatico_request_controller.viatico_request_get_by_user_i
 router.get("/pm/:id", viatico_request_controller.viatico_request_get_by_pm_id);
 router.get("/pm/:id/:code", viatico_request_controller.viatico_request_get_by_project);
 router.get("/", viatico_request_controller.viatico_request_index);
-router.patch("/:id", viatico_request_controller.viatico_request_update);
 router.post("/", viatico_request_controller.viatico_request_create);
 router.delete("/:id", viatico_request_controller.viatico_request_delete);
 
 
 router.get("/admin", viatico_request_controller.project_admin);
 
+router.patch("/aceptarSol/:id", viatico_request_controller.viatico_request_update);
 router.get("/", viatico_request_controller.viatico_request_index);
 router.post("/solicitar",viatico_request_controller.solicitar_viatico);
 
