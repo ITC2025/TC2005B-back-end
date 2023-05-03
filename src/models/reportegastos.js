@@ -48,11 +48,12 @@ module.exports = (sequelize, DataTypes) => {
     ID_status_reporte_gasto: {
       type : DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 2
     },
     concepto: DataTypes.STRING,
     monto: DataTypes.DECIMAL,
     fecha: DataTypes.DATEONLY,
-    imagen: DataTypes.BLOB,
+    imagen: DataTypes.STRING,
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE,

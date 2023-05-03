@@ -59,6 +59,7 @@ module.exports.expense_report_pm_get_by_viatico_id = (req, res) => {
 
 module.exports.expense_report_create =  (req, res) => {
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
+		console.log("server");
 		res.status(404).json({
 			status: "error",
 			message: "Empty body",
@@ -68,23 +69,12 @@ module.exports.expense_report_create =  (req, res) => {
 		return;
 	};
 
-	// Checks that no key has null value
-	// for (let key in req.body) {
-	// 	if (req.body[key] == null || req.body[key] == '') {
-	// 		res.writeHead(400, {"Content-Type": "application/json"});
-	// 		res.end(JSON.stringify({
-	// 			status: "error",
-	// 			message: `null key ${key}`
-	// 		}));
-	// 		return;
-	// 	}
-	// }
 
 	let reportegastos = { 
 		concepto: req.body.concepto,
         monto:req.body.monto,
         fecha:req.body.fecha,
-        imagen:req.body.imagen,
+        imagen:req.file.filename,
         ID_solicitud_viatico: req.body.ID_solicitud_viatico,
         ID_tipo_gasto: req.body.ID_tipo_gasto,
         ID_status_reporte_gasto: req.body.ID_status_reporte_gasto

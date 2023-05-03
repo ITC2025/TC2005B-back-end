@@ -1,32 +1,36 @@
 <html>
 
-<form id="form" action="/upload" method="POST" enctype="multipart/form-data"> 
-	<input type="file" name ="image" ></input>
+<form id="form"> 
+	<input type="text" name="concepto" required>Concepto</input>
+    <input type="number" name="monto" required>Monto</input>
+	<input type="date" name="fecha" required></input>
+	<input type="number" name="ID_solicitud_viatico" required></input>
+	<input type="number" name="ID_tipo_gasto" required></input>
+	<input type="file" name="expense_report_file" required></input>
 	<button type="submit">Submit</button>
 </form>
 
 
 <script>
-	// const form_element = document.getElementById("form");
-	// const file = document.getElementById("file_input");
+    const form_element = document.getElementById("form");
+    const file = document.getElementById("file_input");
 
-	// form_element.addEventListener("submit", (e) => {
-	// 	e.preventDefault();
-	// 	console.log(file.files[0]);
-		
-    //     fetch("http://localhost:3001/file", {
-    //     method: 'POST',
-    //     body: file.files[0],
-    //     headers: {
-    //       "Content-Type": "multipart/form-data"
-    //     }
-    //     })
-    //     .then((res) => console.log(res))
-    //     .catch((err) => ("Error occured", err));
-        
-	// })
+    form_element.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(form_element);
+        const url = "http://localhost:3001/expense_reports";
 
-    
+        fetch(url, {
+            method: "POST",
+            body: data
+        })
+            .then((res) => { 
+                res.json().then((e) => {console.log(e.message)}); 
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    });
 
 </script>
 
