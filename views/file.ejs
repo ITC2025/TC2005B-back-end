@@ -1,1 +1,26 @@
-<h1>HELLO</h1>
+<html>
+
+
+
+<form id="form"> 
+	<input type="file" id="file_input"></input>
+	<button type="submit">Submit</button>
+</form>
+
+
+<script>
+	const form_element = document.getElementById("form");
+	const file = document.getElementById("file_input");
+
+	form_element.addEventListener("submit", (e) => {
+		e.preventDefault();
+		console.log(file.files[0]);
+		fetch("njkajnds", 
+		
+		)
+	})
+
+</script>
+
+
+</html>

@@ -5,6 +5,8 @@ const app_router = require("./src/routes/index");
 const cookie_parser = require("cookie-parser");
 const cors = require("cors");
 
+const multer = require("multer");
+
 const app = express()
 const port = 3001
 
