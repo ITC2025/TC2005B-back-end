@@ -102,6 +102,23 @@ module.exports.viatico_request_get_by_project = (req, res) => {
 	});
 };
 
+module.exports.viatico_request_get_by_user_id = (req, res) => {	
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.SolicitudViaticos.findAll({
+		where: {
+			ID_empleado : req.params.id
+		},
+		include: [{
+			model: db.Proyectos
+		},
+		{
+			model: db.StatusSolicitudViaticos
+		}]
+	}).then((result) => {
+		res.send(result);
+	});
+};
+
 module.exports.viatico_request_get_by_pm_id = (req, res) => {	
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.SolicitudViaticos.findAll({
