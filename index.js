@@ -8,6 +8,7 @@ const cors = require("cors");
 const app = express()
 const port = 3001
 
+app.set("view engine", "ejs");
 app.use(morgan('dev'))
 app.use(express.json());
 app.use(cookie_parser());
