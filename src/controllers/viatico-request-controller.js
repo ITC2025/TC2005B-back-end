@@ -22,6 +22,9 @@ module.exports.comRechazo = (req, res) => {
 		}
 		res.send(dato);
 	})
+	.catch((err) =>{
+		res.send(err);
+	})
 }
 
 module.exports.refBank = (req, res) => {
@@ -36,6 +39,9 @@ module.exports.refBank = (req, res) => {
 			referencia: data.referenciaBancaria
 		}
 		res.send(dato);
+	})
+	.catch((err) =>{
+		res.send(err);
 	})
 }
 
