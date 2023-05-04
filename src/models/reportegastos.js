@@ -54,6 +54,10 @@ module.exports = (sequelize, DataTypes) => {
     monto: DataTypes.DECIMAL,
     fecha: DataTypes.DATEONLY,
     imagen: DataTypes.STRING,
+    factura: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE,

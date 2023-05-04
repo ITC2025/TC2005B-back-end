@@ -48,7 +48,6 @@ module.exports.expense_table_user = (req, res) => {
 		}
 	]
 	}).then((result) => {
-		console.log(result);
 		const gastos = result.map((gasto) => {
 			return {
 				id: gasto.ID_reporte_gasto,
@@ -59,7 +58,6 @@ module.exports.expense_table_user = (req, res) => {
 				status: gasto.StatusReporteGasto.ID_status_reporte_gasto
 			}
 		})
-		console.log(gastos);
 		res.send(gastos);
 	});
 
@@ -83,7 +81,6 @@ module.exports.expense_table_pm = (req, res) => {
 		}
 	]
 	}).then((result) => {
-		console.log(result);
 		const gastos = result.map((gasto) => {
 			return {
 				id: gasto.ID_reporte_gasto,
@@ -94,7 +91,6 @@ module.exports.expense_table_pm = (req, res) => {
 				status: gasto.StatusReporteGasto.ID_status_reporte_gasto
 			}
 		})
-		console.log(gastos);
 		res.send(gastos);
 	});
 
@@ -118,7 +114,6 @@ module.exports.expense_table_admin = (req, res) => {
 		}
 	]
 	}).then((result) => {
-		console.log(result);
 		const gastos = result.map((gasto) => {
 			return {
 				id: gasto.ID_reporte_gasto,
@@ -129,7 +124,6 @@ module.exports.expense_table_admin = (req, res) => {
 				status: gasto.StatusReporteGasto.ID_status_reporte_gasto
 			}
 		})
-		console.log(gastos);
 		res.send(gastos);
 	});
 
@@ -185,7 +179,6 @@ module.exports.expense_image = (req, res) => {
 				imagen: gasto.imagen
 			}
 		})
-		console.log(gastos);
 		res.send(gastos);
 	});
 

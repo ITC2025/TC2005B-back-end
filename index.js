@@ -11,18 +11,24 @@ const app = express()
 const port = 3001
 
 const storage = multer.diskStorage({
-    destination: "data/expense_report_images",
+    destination: "data/reporte_gastos",
     filename: (req, file, cb) => {
-        cb(null, "expense_report_" + Date.now() + path.extname(file.originalname)); 
+        if (file.fieldname == "imagen") {
+            cb(null, "reporte_gasto_imagen_" + Date.now() + path.extname(file.originalname));
+        } else { 
+            cb(null, "reporte_gasto_factura_" + Date.now() + path.extname(file.originalname));
+        }
     }
 });
 
-const upload = multer({storage: storage});
+const upload = multer({storage: storage}).fields([
+    { name: "imagen", maxCount: 1 }, 
+    { name: "xml", maxCount: 1 }
+]);
 
-app.set("view engine", "ejs");
-app.set("expense_report_storage", storage);
-app.set("expense_report_upload", upload.single("expense_report_file"));
+app.set("expense_report_upload", upload);
 
+app.use(express.static('data'));
 app.use(morgan('dev'))
 app.use(express.json());
 app.use(cookie_parser());

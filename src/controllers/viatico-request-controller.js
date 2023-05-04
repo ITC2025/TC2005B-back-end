@@ -304,9 +304,6 @@ module.exports.solicitar_viatico = async (req, res) => {
 	let proyecto = await db.Proyectos.findOne({ where: { codigoProyecto: req.body.codigo_proyecto }})
 	let status = await db.StatusSolicitudViaticos.findOne({ where: { descripcion: req.body.status_descripcion }})
 
-	console.log(proyecto.ID_proyecto)
-	console.log(status.ID_status_solicitud_viaticos)
-
 	let viatico_request = { 
 		monto: req.body.monto,
 		descripcion: req.body.descripcion,
