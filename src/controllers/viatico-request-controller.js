@@ -54,24 +54,11 @@ module.exports.viatico_request_index = (req, res) => {
 			},
 			{
 				model: db.StatusSolicitudViaticos,
-				where:{descripcion: "Aprobado"}
 			}
 		]
 	})
 		.then((data) => {
-
-			const result = data.map((expenses) => {
-				return {
-					ID:expenses.ID_solicitud_viatico,
-					fecha:expenses.fechaEnvioSolicitud,
-					fechaAprob:expenses.fechaAprobado,
-					responsable:expenses.Empleado.name,
-					proyecto:expenses.Proyecto.codigoProyecto,
-					desc:expenses.descripcion,
-					total:expenses.monto
-				}
-			})
-			res.send(result);
+			res.send(data);
 		});
 };
 
