@@ -24,6 +24,21 @@ module.exports.comRechazo = (req, res) => {
 	})
 }
 
+module.exports.refBank = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.SolicitudViaticos.findOne({
+		where: { 
+			ID_solicitud_viatico: req.params.id
+		}
+	})
+	.then((data)=>{
+		let dato = {
+			referencia: data.referenciaBancaria
+		}
+		res.send(dato);
+	})
+}
+
 module.exports.project_admin = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.SolicitudViaticos.findAll({
