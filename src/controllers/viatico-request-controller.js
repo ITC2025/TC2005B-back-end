@@ -7,7 +7,22 @@
 // 	- viatico_request_update
 
 const { stat } = require('fs');
-let db = require('../models')
+let db = require('../models');
+
+module.exports.comRechazo = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	db.SolicitudViaticos.findOne({
+		where: { 
+			ID_solicitud_viatico: req.params.id
+		}
+	})
+	.then((data)=>{
+		let dato = {
+			comentario: data.motivoRechazo
+		}
+		res.send(dato);
+	})
+}
 
 module.exports.project_admin = (req, res) => {
 	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
