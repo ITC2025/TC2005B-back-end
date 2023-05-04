@@ -27,6 +27,14 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
+    ID_cuenta: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+    },
+    ID_status_reembolso: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+    },
     monto: DataTypes.DECIMAL,
     createdAt: {
         allowNull: false,

@@ -37,10 +37,27 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
+    ID_solicitud_viatico: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+    },
+    ID_tipo_gasto: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+    },
+    ID_status_reporte_gasto: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 2
+    },
     concepto: DataTypes.STRING,
     monto: DataTypes.DECIMAL,
     fecha: DataTypes.DATEONLY,
-    imagen: DataTypes.BLOB,
+    imagen: DataTypes.STRING,
+    factura: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
