@@ -336,3 +336,42 @@ module.exports.solicitar_viatico = async (req, res) => {
 };
 
 
+module.exports.viatico_status_request_update = (req, res) => {
+	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
+	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
+		res.status(404).json({
+			status: "error",
+			message: "Empty body",
+			payload: null
+		});
+
+		return;
+	};
+
+	db.SolicitudViaticos.update(req.body, {
+		where: {
+			ID_solicitud_viatico: req.params.id
+		}}).then((success) => {
+			if (success) {
+				res.status(200).json({
+					status: "success",
+					message: "Viatico Request successfully updated",
+					payload: req.body
+				});
+			}
+
+			else {
+				res.status(500).json({
+					status: "error",
+					message: "Viatico Request could not be updated",
+					payload: null
+				});
+			}
+	}).catch((err) => {
+			res.status(500).json({
+				status: "error",
+				message: "Error updating Viatico Request. " + err.message,
+				payload: null
+			});
+	});
+};

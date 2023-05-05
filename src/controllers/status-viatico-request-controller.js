@@ -40,18 +40,6 @@ module.exports.status_viatico_request_create =  (req, res) => {
 		return;
 	};
 
-	// Checks that no key has null value
-	// for (let key in req.body) {
-	// 	if (req.body[key] == null || req.body[key] == '') {
-	// 		res.writeHead(400, {"Content-Type": "application/json"});
-	// 		res.end(JSON.stringify({
-	// 			status: "error",
-	// 			message: `null key ${key}`
-	// 		}));
-	// 		return;
-	// 	}
-	// }
-
 	let status_viatico_request = { 
 		descripcion: req.body.descripcion,
 	};
