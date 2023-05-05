@@ -101,7 +101,7 @@ module.exports.expense_report_create =  async (req, res) => {
 	if (req.files["xml"]) {
 		const xml_file = req.files["xml"][0];
 
-		xml_path = "reporte_gasto_factura_" + Date.now() + path.extname(xml_file.originalname);
+		const xml_path = "reporte_gasto_factura_" + Date.now() + path.extname(xml_file.originalname);
 
 		const xml_storage_ref = ref(storage, `data/reporte_gastos/${xml_path}`);
 		const xml_metadata = {
