@@ -39,6 +39,12 @@ module.exports = {
         descripcion: 'Rechazado',
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        ID_status_solicitud_viaticos: 7,
+        descripcion: 'Eliminado',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {});
   },

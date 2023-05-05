@@ -9,7 +9,6 @@
 const db = require('../models')
 
 module.exports.status_refund_index = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.StatusReembolsos.findAll()
 		.then((result) => {
 			res.send(result);
@@ -17,7 +16,6 @@ module.exports.status_refund_index = (req, res) => {
 };
 
 module.exports.status_refund_get_by_id = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.StatusReembolsos.findAll({
 		where : {
 			ID_status_reembolso: req.params.id
@@ -29,7 +27,6 @@ module.exports.status_refund_get_by_id = (req, res) => {
 
 
 module.exports.status_refund_create =  (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -75,7 +72,6 @@ module.exports.status_refund_create =  (req, res) => {
 
 
 module.exports.status_refund_delete = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.StatusReembolsos.destroy({
 		where: {
 			ID_status_reembolso: req.params.id
@@ -106,7 +102,6 @@ module.exports.status_refund_delete = (req, res) => {
 };
 
 module.exports.status_refund_update = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

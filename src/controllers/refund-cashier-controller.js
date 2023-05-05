@@ -9,7 +9,6 @@
 const db = require('../models')
 
 module.exports.refund_cashier_index = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReembolsoCajas.findAll()
 		.then((result) => {
 			res.send(result);
@@ -17,7 +16,6 @@ module.exports.refund_cashier_index = (req, res) => {
 };
 
 module.exports.refund_cashier_get_by_id = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReembolsoCajas.findAll({
 		where : {
 			ID_reembolso_cajas: req.params.id
@@ -29,7 +27,6 @@ module.exports.refund_cashier_get_by_id = (req, res) => {
 
 
 module.exports.refund_cashier_create =  (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
@@ -77,7 +74,6 @@ module.exports.refund_cashier_create =  (req, res) => {
 
 
 module.exports.refund_cashier_delete = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReembolsoCajas.destroy({
 		where: {
 			ID_reembolso_cajas: req.params.id
@@ -108,7 +104,6 @@ module.exports.refund_cashier_delete = (req, res) => {
 };
 
 module.exports.refund_cashier_update = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
