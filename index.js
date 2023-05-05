@@ -6,12 +6,18 @@ const cookie_parser = require("cookie-parser");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
+const firebase = require("firebase/app");
+const { getStorage } = require('firebase/storage');
+const { firebaseConfig } = require("./src/config/firebase_config");
 
 const app = express()
 const port = 3001
 
-const storage = multer.diskStorage({
-    destination: "data/reporte_gastos",
+firebase.initializeApp(firebaseConfig);
+
+const firebase_storage = getStorage();
+
+const storage = multer.memoryStorage({
     filename: (req, file, cb) => {
         if (file.fieldname == "imagen") {
             cb(null, "reporte_gasto_imagen_" + Date.now() + path.extname(file.originalname));
@@ -27,6 +33,7 @@ const upload = multer({storage: storage}).fields([
 ]);
 
 app.set("expense_report_upload", upload);
+app.set("firebase_storage", firebase_storage);
 
 app.use(express.static('data'));
 app.use(morgan('dev'))
