@@ -54,10 +54,10 @@ module.exports = {
       fechaAprobado: {
         type: Sequelize.DATE
       },
-      referenciaBancaria: {
+      referenciaBancariaSolicitud: {
         type: Sequelize.STRING
       },
-      motivoRechazo: {
+      motivoRechazoSolicitud: {
         type: Sequelize.STRING
       },
       createdAt: {

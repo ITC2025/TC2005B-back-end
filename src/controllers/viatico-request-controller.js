@@ -18,7 +18,7 @@ module.exports.comRechazo = (req, res) => {
 	})
 	.then((data)=>{
 		let dato = {
-			comentario: data.motivoRechazo
+			comentario: data.motivoRechazoSolicitud
 		}
 		res.send(dato);
 	})
@@ -36,7 +36,7 @@ module.exports.refBank = (req, res) => {
 	})
 	.then((data)=>{
 		let dato = {
-			referencia: data.referenciaBancaria
+			referencia: data.referenciaBancariaSolicitud
 		}
 		res.send(dato);
 	})
@@ -192,8 +192,8 @@ module.exports.viatico_request_create =  (req, res) => {
 		destino: req.body.destino,
 		fechaInicio: req.body.fechaInicio,
 		fechaTermino: req.body.fechaTermino,
-		referenciaBancaria: req.body.referenciaBancaria,
-		motivoRechazo: req.body.motivoRechazo,
+		referenciaBancariaSolicitud: req.body.referenciaBancariaSolicitud,
+		motivoRechazoSolicitud: req.body.motivoRechazoSolicitud,
         ID_empleado: req.body.ID_empleado,
         ID_proyecto: req.body.ID_proyecto,
         ID_status_solicitud_viaticos: req.body.ID_status_solicitud_viaticos

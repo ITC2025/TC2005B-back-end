@@ -76,7 +76,7 @@ module.exports = {
         fechaTermino: new Date('2023-05-01'),
         fechaEnvioSolicitud: new Date('2023-04-18 15:03:48'),
         fechaAprobado: new Date('2023-04-20 09:32:21'),
-        referenciaBancaria: "123456789012",
+        referenciaBancariaSolicitud: "123456789012",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -91,7 +91,7 @@ module.exports = {
         fechaInicio: new Date('2023-05-06'),
         fechaTermino: new Date('2023-05-08'),
         fechaEnvioSolicitud: new Date('2023-05-01 13:03:48'),
-        motivoRechazo: "No es un viatico justificado.",
+        motivoRechazoSolicitud: "No es un viatico justificado.",
         createdAt: new Date(),
         updatedAt: new Date()
       }
