@@ -18,7 +18,6 @@ const hash_password = async (password) => {
 
 
 module.exports.userSaldoGet = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Cuentas.findOne({
 		where: {
 			ID_empleado: req.params.id
@@ -33,7 +32,6 @@ module.exports.userSaldoGet = (req, res) => {
 }
 
 module.exports.userViaticos = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.SolicitudViaticos.findAll({
 		where: {
 			ID_empleado: req.params.id
@@ -66,7 +64,6 @@ module.exports.userViaticos = (req, res) => {
 
 
 module.exports.user_index = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.findAll()
 		.then((result) => {
 			res.send(result);
@@ -74,7 +71,6 @@ module.exports.user_index = (req, res) => {
 };
 
 module.exports.user_get_by_role = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.findAll({
 		where : {
 			ID_rol: req.params.rol
@@ -85,7 +81,6 @@ module.exports.user_get_by_role = (req, res) => {
 };
 
 module.exports.user_get_by_id = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.findAll({
 		where : {
 			ID_empleado: req.params.id
@@ -148,7 +143,6 @@ module.exports.user_create =  async (req, res) => {
 
 
 module.exports.user_delete = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.Empleados.destroy({
 		where: {
 			ID_empleado: req.params.id
@@ -179,7 +173,6 @@ module.exports.user_delete = (req, res) => {
 };
 
 module.exports.user_update = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",

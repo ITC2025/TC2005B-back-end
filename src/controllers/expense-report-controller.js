@@ -245,7 +245,6 @@ module.exports.expense_report_update = (req, res) => {
 
 
 module.exports.expense_report_patch_status = (req, res) => {
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
 		res.status(404).json({
 			status: "error",
