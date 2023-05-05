@@ -9,24 +9,22 @@
 const db = require("../models");
 
 module.exports.viatico_index = (req, res) => {
-	db.Viaticos.findAll()
-		.then((result) => {
-			res.send(result);
-		});
+  db.Viaticos.findAll().then((result) => {
+    res.send(result);
+  });
 };
 
-module.exports.viatico_get_by_id = (req, res) => {	
-	db.Viaticos.findAll({
-		where : {
-			ID_viatico: req.params.id
-		}
-	}).then((result) => {
-			res.send(result);
-	});
+module.exports.viatico_get_by_id = (req, res) => {
+  db.Viaticos.findAll({
+    where: {
+      ID_viatico: req.params.id,
+    },
+  }).then((result) => {
+    res.send(result);
+  });
 };
 
 module.exports.viatico_get_expenses_by_ID_solicitud_viatico = (req, res) => {
-  res.set("Access-Control-Allow-Origin", ["http://localhost:3000"]);
   db.Viaticos.findAll({
     where: {
       ID_solicitud_viatico: req.params.id,
@@ -36,13 +34,13 @@ module.exports.viatico_get_expenses_by_ID_solicitud_viatico = (req, res) => {
   });
 };
 
-module.exports.viatico_create =  (req, res) => {
-	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
-		res.status(404).json({
-			status: "error",
-			message: "Empty body",
-			payload: null
-		});
+module.exports.viatico_create = (req, res) => {
+  if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
+    res.status(404).json({
+      status: "error",
+      message: "Empty body",
+      payload: null,
+    });
 
     return;
   }
@@ -83,42 +81,42 @@ module.exports.viatico_create =  (req, res) => {
 };
 
 module.exports.viatico_delete = (req, res) => {
-	db.Viaticos.destroy({
-		where: {
-			ID_viatico: req.params.id
-		}
-	}).then((success) => {
-		if (success) {
-				res.status(200).json({
-					status: "success",
-					message: "Viatico successfully deleted",
-					payload: null 
-				});
-		}
-
-		else {
-				res.status(200).json({
-					status: "error",
-					message: "Viatico could not be deleted",
-					payload: null
-				});
-		}
-	}).catch((err) => {
-			res.status(500).json({
-				status: "error",
-				message: "Error deleting Viatico. " + err.message,
-				payload: null
-			});
-	});
+  db.Viaticos.destroy({
+    where: {
+      ID_viatico: req.params.id,
+    },
+  })
+    .then((success) => {
+      if (success) {
+        res.status(200).json({
+          status: "success",
+          message: "Viatico successfully deleted",
+          payload: null,
+        });
+      } else {
+        res.status(200).json({
+          status: "error",
+          message: "Viatico could not be deleted",
+          payload: null,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: "error",
+        message: "Error deleting Viatico. " + err.message,
+        payload: null,
+      });
+    });
 };
 
 module.exports.viatico_update = (req, res) => {
-	if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
-		res.status(404).json({
-			status: "error",
-			message: "Empty body",
-			payload: null
-		});
+  if (!req.body || JSON.stringify(req.body) === JSON.stringify({})) {
+    res.status(404).json({
+      status: "error",
+      message: "Empty body",
+      payload: null,
+    });
 
     return;
   }
