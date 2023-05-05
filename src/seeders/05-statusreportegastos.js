@@ -33,6 +33,12 @@ module.exports = {
         descripcion: 'Borrado',
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        ID_status_reporte_gasto: 6,
+        descripcion: 'Pagado',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {});
   },
