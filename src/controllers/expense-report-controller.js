@@ -223,10 +223,11 @@ module.exports.expense_report_patch_status = (req, res) => {
 		return;
 	};
 
-	db.ReporteGastos.update(req.body, {
-		where: {
-			ID_solicitud_viatico: req.params.id
-		}}).then((success) => {
+	db.ReporteGastos.update(req.body, 
+		{ where : {ID_solicitud_viatico : req.params.id, ID_status_reporte_gasto: {
+			[Op.not]: 5
+			}}, 
+		}).then((success) => {
 			if (success) {
 				res.status(200).json({
 					status: "success",
