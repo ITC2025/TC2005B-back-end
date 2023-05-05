@@ -10,7 +10,6 @@ let db = require('../models')
 const { Op } = require("sequelize");
 
 module.exports.side_info = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.SolicitudViaticos.findAll({
 		where : {
 			ID_solicitud_viatico: req.params.id
@@ -29,7 +28,6 @@ module.exports.side_info = (req, res) => {
 };
 
 module.exports.expense_table_user = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.findAll({
 		include: [{
 			model: db.SolicitudViaticos,
@@ -64,7 +62,6 @@ module.exports.expense_table_user = (req, res) => {
 };
 
 module.exports.expense_table_pm = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.findAll({
 		include: [{
 			model: db.SolicitudViaticos,
@@ -97,7 +94,6 @@ module.exports.expense_table_pm = (req, res) => {
 };
 
 module.exports.expense_table_admin = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.findAll({
 		include: [{
 			model: db.SolicitudViaticos,
@@ -130,7 +126,6 @@ module.exports.expense_table_admin = (req, res) => {
 };
 
 module.exports.sum_user = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.sum('monto', 
 	{ where : {ID_solicitud_viatico : req.params.id, ID_status_reporte_gasto: {
 		[Op.not]: 5
@@ -143,7 +138,6 @@ module.exports.sum_user = (req, res) => {
 };
 
 module.exports.sum_pm = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.sum('monto', 
 	{ where : {ID_solicitud_viatico : req.params.id, ID_status_reporte_gasto: 2}, 
 	})
@@ -154,7 +148,6 @@ module.exports.sum_pm = (req, res) => {
 };
 
 module.exports.sum_admin = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.sum('monto', 
 	{ where : {ID_solicitud_viatico : req.params.id, ID_status_reporte_gasto: 3}, 
 	})
@@ -170,7 +163,6 @@ module.exports.sum_admin = (req, res) => {
 
 
 module.exports.expense_image = (req, res) => {	
-	res.set('Access-Control-Allow-Origin', ['http://localhost:3000']);
 	db.ReporteGastos.findAll({
 		where: {ID_reporte_gasto : req.params.id},
 	}).then((result) => {
