@@ -8,7 +8,7 @@
 // 	- expense_report_update
 //  - expense_report_patch_status
 
-const {  ref, getDownloadURL, uploadBytesResumable } = require("firebase/storage");
+const {  ref, getDownloadURL, uploadBytesResumable, deleteObject } = require("firebase/storage");
 const path = require("path");
 let db = require('../models')
 
@@ -142,6 +142,7 @@ module.exports.expense_report_create =  async (req, res) => {
 
 
 module.exports.expense_report_delete = (req, res) => {
+	// Firebase file delete
 	db.ReporteGastos.destroy({
 		where: {
 			ID_reporte_gasto: req.params.id
@@ -181,6 +182,37 @@ module.exports.expense_report_update = (req, res) => {
 
 		return;
 	};
+
+	if (req.body.ID_status_reporte_gasto === 5) {
+		db.ReporteGastos.findOne({
+			where : {
+				ID_reporte_gasto: req.params.id
+			}
+		}).then((result) => {
+			const storage = req.app.get("firebase_storage");
+
+			const image_storage_ref = ref(storage, result.imagen);
+			
+			deleteObject(image_storage_ref)
+				.then(() => {
+					console.log(`${result.imagen} deleted`);
+				}).catch((err) => {
+					console.log("Error deleting: " + err);
+				})
+
+			if (result.factura) {
+				const factura_storage_ref = ref(storage, result.factura);
+				
+				deleteObject(factura_storage_ref)
+					.then(() => {
+						console.log(`${result.factura} deleted`);
+					}).catch((err) => {
+						console.log("Error deleting: " + err);
+					})
+			}
+			
+		});
+	}
 
 	db.ReporteGastos.update(req.body, {
 		where: {
