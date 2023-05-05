@@ -55,7 +55,7 @@ module.exports.expense_table_user = (req, res) => {
 				tipo: gasto.TipoGasto.descripcion,
 				concepto: gasto.concepto,
 				total: gasto.monto,
-				status: gasto.StatusReporteGasto.ID_status_reporte_gasto
+				status: gasto.StatusReporteGasto.descripcion
 			}
 		})
 		res.send(gastos);
@@ -88,7 +88,7 @@ module.exports.expense_table_pm = (req, res) => {
 				tipo: gasto.TipoGasto.descripcion,
 				concepto: gasto.concepto,
 				total: gasto.monto,
-				status: gasto.StatusReporteGasto.ID_status_reporte_gasto
+				status: gasto.StatusReporteGasto.descripcion
 			}
 		})
 		res.send(gastos);
@@ -121,7 +121,7 @@ module.exports.expense_table_admin = (req, res) => {
 				tipo: gasto.TipoGasto.descripcion,
 				concepto: gasto.concepto,
 				total: gasto.monto,
-				status: gasto.StatusReporteGasto.ID_status_reporte_gasto
+				status: gasto.StatusReporteGasto.descripcion
 			}
 		})
 		res.send(gastos);
