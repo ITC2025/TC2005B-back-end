@@ -60,6 +60,12 @@ module.exports = {
       motivoRechazoSolicitud: {
         type: Sequelize.STRING
       },
+      referenciaBancariaGastos: {
+        type: Sequelize.STRING
+      },
+      motivoRechazoGastos: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -53,6 +53,8 @@ module.exports = (sequelize, DataTypes) => {
     fechaAprobado: DataTypes.DATE,
     referenciaBancariaSolicitud: DataTypes.STRING,
     motivoRechazoSolicitud: DataTypes.STRING,
+    referenciaBancariaGastos: DataTypes.STRING,
+    motivoRechazoGastos: DataTypes.STRING,
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE,

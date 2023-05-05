@@ -194,6 +194,8 @@ module.exports.viatico_request_create =  (req, res) => {
 		fechaTermino: req.body.fechaTermino,
 		referenciaBancariaSolicitud: req.body.referenciaBancariaSolicitud,
 		motivoRechazoSolicitud: req.body.motivoRechazoSolicitud,
+		referenciaBancariaGastos: req.body.referenciaBancariaGastos,
+		motivoRechazoGastos: req.body.motivoRechazoGastos,
         ID_empleado: req.body.ID_empleado,
         ID_proyecto: req.body.ID_proyecto,
         ID_status_solicitud_viaticos: req.body.ID_status_solicitud_viaticos
